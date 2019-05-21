@@ -47,3 +47,7 @@ UserInterfaceState.xcuserstate
 
 *.png
 
+
+plugins/
+
+resources/
