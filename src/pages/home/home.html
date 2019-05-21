@@ -1,0 +1,801 @@
+<!-- <ion-header>
+  <ion-navbar transparent>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+  </ion-navbar>
+</ion-header> -->
+<div *ngIf="currentPage !== 'userDetails' &&  currentPage !== 'folio' &&  currentPage !== 'terms'" style="    z-index: 1;
+height: 100%;
+width: 47.8%;
+background-color: rgba(0, 0, 0, 0.18);
+top: 0;
+right: 3%;
+position: fixed;">
+
+</div>
+
+<ion-content class="bg-image" [ngStyle]="{'background-image': 'url('+bgImage+')'}" >
+  <ion-grid no-padding>
+    <ion-row class="custom" text-center>
+      <ion-col class="custom"> <!-- Left side of the app -->
+      	<div class="time"> <!-- Time, weather and date display -->
+            <h1 class="header">{{time}} 30°</h1> <img class="header" src="assets/imgs/AccorHotel/weather.png" alt="">
+          </div>
+          <hr class="header" align="left">
+          <h5>{{date}}</h5>  <!-- end of time, weather and date display -->
+          <div style="margin-top:170px;"text-center *ngIf="currentPage === 'passport'"> <!-- passport instruction -->
+             
+              <hr margin-bottom>
+
+              <div class="container">
+                <ion-row>
+                <ion-col col-3 style="border-right: 1px solid white;">
+              	<img style="height:100px" src='assets/imgs/AccorHotel/pass.png' alt="">
+              </ion-col>
+              <ion-col col-9>
+              	 <p style="color:white;text-align:left">Please scan the machine-readable zone (MRZ*) of your passport.</p>
+                <p style="color:white;text-align:left"><i>*combinations below passport information and photo.</i></p>
+              </ion-col>
+            </ion-row>
+              </div>
+          </div> <!-- end of passport instruction -->
+
+      </ion-col>
+      <ion-col class="gray-box"> <!-- right side of the app -->
+
+        <div class="gray-box-content">
+          <img *ngIf="currentPage !== 'terms' && currentPage !== 'userDetails' && currentPage !== 'folio' " class="logo" src="assets/imgs/AccorHotel/logo.png" alt="" align="center"> <!-- default logo size -->
+          <img *ngIf="currentPage === 'terms' || currentPage === 'userDetails' || currentPage === 'folio' " class="smallest-logo" src="assets/imgs/AccorHotel/logo.png" alt="" align="center"> <!-- smaller logo for center pages -->
+         
+          <div class="content-container"> 
+             
+            <div *ngIf="currentPage === 'home'" class="buttons"> <!-- home content -->
+              <ion-row text-center>
+                <ion-col>
+                  <button style="padding:5px 120px 5px 120px" (click)="checkIn()" ion-button large class="transparent">CHECK-IN</button>
+                </ion-col>
+              </ion-row>
+              <ion-row text-center>
+                <ion-col>
+                  <button style="padding:5px 120px 5px 120px" (click)="checkOut()" ion-button large class="transparent">CHECK-OUT</button>
+                </ion-col>
+              </ion-row>
+              <ion-row text-center>
+                <ion-col>
+                  <button style="padding:5px 120px 5px 120px" ion-button large class="transparent">INVOICE</button>
+                </ion-col>
+              </ion-row>
+               <ion-row text-center>
+                <ion-col>
+                  <button style="padding:5px 120px 5px 120px" (click)="settings()" ion-button large class="transparent">SETTINGS</button>
+                </ion-col>
+              </ion-row>
+            </div>
+            <div *ngIf="currentPage === 'settings'" class="buttons"> <!-- verification content -->
+              <h4 text-center>Configuration</h4>
+              <hr margin-bottom>
+              <p text-center style="color:white">Please browse for the image file and click the Load Button.</p>
+              <h6 text-left margin-top>File Path:</h6>
+              <p text-left style="color:white">{{uri}}</p>
+              <p text-left style="color:white">{{config}}</p>
+              <!-- <p text-left style="color:white">{{config2}}</p>
+              <p text-left style="color:white">{{config3}}</p> -->
+               <ion-row text-center>
+                <ion-col>
+                  <button style="padding:5px 120px 5px 120px" (click)="Browse()" ion-button large class="transparent">BROWSE</button>
+                </ion-col>
+              </ion-row>
+             
+              <ion-row text-center>
+                <ion-col>
+                  <button style="padding:5px 120px 5px 120px" (click)="Load()" [disabled]="uri==='No image file selected'" ion-button large class="transparent">Load</button>
+                </ion-col>
+              </ion-row>
+              
+              <ion-row text-center margin-bottom *ngIf="currentPage === 'settings'">
+              <ion-col> <button  (click)="settingsBack()" ion-button  class="transparent">BACK</button> </ion-col>
+            </ion-row>
+            <ion-row> <!-- default size -->
+              <img class="small-logo" src="assets/imgs/AccorHotel/metasphere.png" alt="metasphere"> 
+          </ion-row>
+            </div>
+
+            <div text-center class="checkinOption" *ngIf="currentPage === 'checkinOption'"> <!-- check in options content -->
+                <h4>Choose Check-in Option</h4>
+                <hr margin-bottom>
+                  <ion-row text-center>
+                    <ion-col>
+                      <div class="animate-grow option" style="color:darkblue;padding:1.2vw">
+                          PASSPORT
+                      </div>
+                    </ion-col>
+                    <ion-col >
+                      <div class="animate-grow option" style="padding:1.2vw">
+                          QR CODE
+                      </div>
+                      </ion-col>
+                  </ion-row>
+                  <ion-row text-center>
+                      <ion-col>
+                        <div class="animate-grow option" style="color:darkblue;padding:1.2vw">
+                            ID CARD
+                        </div>
+                      </ion-col>
+                      <ion-col>
+                         <div (click)="next()" style="font-size: 15px; padding: 0.8vw" class="animate-grow option">
+                            CONFIRMATION NUMBER
+                         </div>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row text-center>
+                        <ion-col >
+                         <div class="animate-grow option" style="color:darkblue;padding:1.2vw">
+                            WALK-IN
+                         </div>
+                        </ion-col>
+                        <ion-col >
+                        <div style="font-size: 15px; padding: 0.5vw" class="animate-grow  option">
+                            LOGIN JUMEIRAH SIRIUS ACCOUNT
+                        </div>
+                        </ion-col>
+                      </ion-row>
+              </div>
+            <div text-center class="roomInfo" *ngIf="currentPage === 'confirmNumber'"> <!-- input confirmation number content -->
+              <h4>Confirmation Number</h4>
+              <hr margin-bottom>
+               <div class="container" >
+                <ion-item margin-bottom style="margin-top: 50px;">
+                  <ion-input text-center [(ngModel)]="confirmNumber" type="number" placeholder="Confirmation Number"></ion-input>
+                </ion-item>
+               
+              </div>
+             <!--  <ion-item class="input-container">
+                <ion-input class="grey" text-center placeholder="Confirmation Number" [(ngModel)]="confirmNumber" type="number"></ion-input>
+              </ion-item>
+              <ion-item class="input-container">
+              	<ion-input class="grey" text-center placeholder="Room Number" [(ngModel)]="roomNumber" type="number"></ion-input>
+              </ion-item> -->
+
+            </div>
+
+
+
+          
+            <div text-center *ngIf="currentPage === 'verification'" class="verification"> <!-- verification content -->
+              <h4>Verify Your Reservation​</h4>
+              <hr margin-bottom>
+
+              <div class="container">
+                <ion-row>
+               	<ion-col col-6 style="border-right: 1px white solid">
+                <p style="color:white" align="right">First Name:</p>
+                <p style="color:white" align="right">Last Name:</p>
+                <p style="color:white" align="right">Arrival Date:</p>
+                <p style="color:white" align="right">Departure Date:</p>
+                <p style="color:white" align="right">Total Room Night(s):</p>
+                <p style="color:white" align="right">Room Type:</p>
+                <p style="color:white" align="right">Room Number:</p>
+                <p style="color:white" align="right">Confirmation Number:</p>
+                <p style="color:white" align="right">Add-ons:</p>
+
+            </ion-col>
+            <ion-col col-6>
+                <p style="color:white" align="left"> <span margin-left>{{bookingDetails?.firstName}}</span></p>
+                <p style="color:white" align="left"> <span margin-left>{{bookingDetails?.lastName}}</span></p>
+                <p style="color:white" align="left"><span margin-left>{{bookingDetails?.arrivalDate}}</span></p>
+                <p style="color:white" align="left"> <span margin-left>{{bookingDetails?.departureDate}}</span></p>
+                <p style="color:white" align="left"><span margin-left>{{bookingDetails?.totalRoomNights}}</span></p>
+                <p style="color:white" align="left"> <span margin-left>{{bookingDetails?.type}}</span></p>
+                <p style="color:white" align="left"> <span margin-left>111</span></p>
+                <p style="color:white" align="left"> <span margin-left>12345</span></p>
+                <p style="color:white" align="left"><span margin-left>{{bookingDetails?.addOns}}</span></p>
+            </ion-col>
+        </ion-row>
+
+
+              </div>
+            </div>
+            <div text-center *ngIf="currentPage === 'passport'" class="passport"> <!-- capture password details content -->
+              <h4 >Scan Passport MRZ</h4>
+              <hr margin-bottom>
+
+              <div class="container">
+                <img style="padding: 0px 25px 0px 25px" [src]="selectedImage ? selectedImage : 'assets/imgs/AccorHotel/passport.png'" alt="">
+              </div>
+            </div>
+             <div text-center *ngIf="currentPage === 'scanComplete'" class="checkInSuccess">
+              <h4>Scan Passport MRZ</h4>
+              <hr margin-bottom>
+
+              <div class="container">
+                <p style="color:white;margin-top:65px;"><i>Scanning complete!</i></p>
+              </div>
+          </div>
+
+              <div *ngIf="currentPage === 'userDetails'" class="userDetails"> <!-- passport details display -->
+                <h4 text-center>Registration Card</h4>
+                <ion-row margin-bottom class="container" text-left>
+                  <ion-col col-3>
+                    <p no-margin>First Name: <span margin-left></span></p>
+                    <p no-margin>Last Name: <span margin-left></span></p>
+                    <p no-margin>Arabic Name: <span margin-left></span></p>
+                    <p no-margin>Arrival Date: <span margin-left></span></p>
+                    <p no-margin>Departure Date: <span margin-left></span></p>
+                    <p no-margin>Total Room Night(s): <span margin-left></span></p>
+                    <p no-margin>Room Type: <span margin-left></span></p>
+                    <p no-margin>Room Number: <span margin-left></span></p>
+                    <p no-margin>Add-ons: <span margin-left></span></p>
+                    <p no-margin>Number of Adults: <span margin-left></span></p>
+                    <p no-margin>Number of Children: <span margin-left></span></p>
+                    <p no-margin>TOTAL(Tax 7%): <span margin-left></span></p>
+                    <p no-margin>Payment Method: <span style='color:red;font-weight: bolder;'>*</span></p>
+                    <p no-margin>Relationship Code: <span style='color:red;font-weight: bolder;'>*</span></p>
+                    <p no-margin>Hearing Impaired: <span margin-left></span></p>
+                    <p no-margin>Mobility Impaired: <span margin-left></span></p>
+                   
+                  </ion-col>
+                  <ion-col col-3>
+                    <p no-margin>{{textRecognized?.textLines[0].text.split('«')[1].replace('<', ' ').replace('<', ' ')}} <span margin-left></span> </p>
+                    <p no-margin>{{textRecognized?.textLines[0].text.split('«')[0].substring(5)}} <span margin-left></span> </p>
+                    <p no-margin>N/A<span margin-left></span> </p>
+                    <p no-margin>{{bookingDetails?.arrivalDate}} <span margin-left></span></p>
+                    <p no-margin>{{bookingDetails?.departureDate}}<span margin-left></span></p>
+                    <p no-margin>{{bookingDetails?.totalRoomNights}}<span margin-left></span></p>
+                    <p no-margin>{{bookingDetails?.type}}<span margin-left></span></p>
+                    <p no-margin>111<span margin-left></span></p>
+                    <p no-margin>N/A<span margin-left></span></p>
+                    <p no-margin>2<span margin-left></span></p>
+                    <p no-margin>2<span margin-left></span></p>
+                    <p no-margin>$550.00 <span margin-left></span></p>
+                    <p no-margin><select style="width: 98px;" [(ngModel)]='payment'>
+                                <option style="display: none;" value="">Please Select</option>
+                                <option value="Credit">Credit Card</option>
+                                <option value="Cash">Cash</option>
+                                </select></p>
+                    <p no-margin><select style="width: 98px;" [(ngModel)]='relCode'>
+                                <option style="display: none;" value="">Please Select</option>
+                                <option value="Business Associate">Business Associate</option>
+                                <option value="Family Helper">Family Helper</option>
+                                <option value="Family Member">Family Member</option>
+                                <option value="Friend">Friend</option>
+                                <option value="Visitor">Visitor</option>
+                              </select></p>
+
+                    <p no-margin>
+                    	<span>
+                    		<input type="radio" name="himpaired" checked="true" value="no"> No 
+                    		<input style="margin-left:5px" type="radio" name="himpaired" value="yes"> Yes
+                    	</span>
+                    </p>
+                    <p no-margin>
+                    	<span>
+                    		<input type="radio" name="mimpaired" checked="true"  value="no"> No 
+                    		<input style="margin-left:5px" type="radio" name="mimpaired" value="yes"> Yes
+                    	</span>
+                    </p>
+                  </ion-col>
+
+                  <ion-col col-3>
+                    <p no-margin>Gender: <span margin-left></span></p>
+                    <p no-margin>Emirate Code: <span style='color:red;font-weight: bolder;'>*</span></p>
+                    <p no-margin>Document No: <span margin-left></span></p>
+                    <p no-margin>Expiry Date: <span margin-left></span></p>
+                    <p no-margin>Country Code: <span margin-left></span></p>
+                    <p no-margin>Contact Number: <span margin-left></span></p>
+                    <p no-margin>Email Address: <span margin-left></span></p>
+                    <p no-margin>Resident Country Phone: <span style='color:red;font-weight: bolder;'>*</span></p>
+                    <p no-margin>Mobile: <span style='color:red;font-weight: bolder;'>*</span></p>
+                    <p no-margin>Visit Purpose: <span style='color:red;font-weight: bolder;'>*</span></p>
+                    <p no-margin>Visually Impaired: <span margin-left></span></p>
+                    <p no-margin>Other Disabilities: <span margin-left></span></p>
+                  </ion-col>
+                <ion-col col-3>
+                    <p no-margin>{{textRecognized?.textLines[1].text.indexOf('F')  > -1 ? 'Female' : 'Male'}} <span margin-left></span></p>
+                    <p no-margin> <select style=" width: 98px;" [(ngModel)]='emirateCode'>
+                                <option style="display: none;" value="">Please Select</option>
+                                <option value="Dubai">Dubai</option>
+                                <option value="Abu Dhabi">Abu Dhabi</option>
+                                <option value="Sharjah">Sharjah</option>
+                                <option value="Ras Alkhaimah">Ras Alkhaimah</option>
+                                <option value="Ajman">Ajman</option>
+                                <option value="Al Ain">Al Ain</option>
+                                <option value="Umm Al Quwain">Umm Al Quwain</option>
+                                <option value="Western Areas">Western Areas</option>
+                              </select></p>
+                    <p no-margin>{{textRecognized?.textLines[1].text.substring(0,9)}} <span margin-left></span></p>
+                    <p no-margin><span margin-left></span></p>
+                    <p no-margin>{{textRecognized?.textLines[0].text.substring(2,5)}} <span margin-left></span></p>
+                    <p no-margin><input style="width:98px" type="number" value="" name="" id=""><span margin-left></span></p>
+                    <p no-margin><input style="width:98px" type="email" value="" name="" id=""><span margin-left></span></p>
+                    <p no-margin><input style="width:98px" type="number" [(ngModel)]='resCounPhone'><span margin-left></span></p>
+                    <p no-margin><input style="width:98px" type="number" [(ngModel)]='mobNumber'><span margin-left></span></p>
+                     <p no-margin><select style="width: 98px;" [(ngModel)]='visit'>
+                                <option style="display: none;" value="">Please Select</option>
+                                <option value="Air/Ship crew">Air/Ship crew</option>
+                                <option value="Business/MICE and professional">Business/MICE and professional</option>
+                                <option value="Health treatment/reasons">Health treatment/reasons</option>
+                                <option value="Leisure, recreation and holidays">Leisure, recreation and holidays</option>
+                                <option value="Religion/pilgrimages">Religion/pilgrimages</option>
+                                <option value="Sports/participation">Sports/participation</option>
+                                <option value="Visiting friends and relatives">Visiting friends and relatives</option>
+                              </select></p>
+                    <p no-margin>
+                    
+                    		<input type="radio" name="vimpaired" checked="true" value="no"> No
+                    		<input style="margin-left:5px" type="radio" name="vimpaired" value="yes"> Yes
+                    	
+                    </p>
+                    <p no-margin>
+                    	
+                    		<input type="radio" name="oimpaired" checked="true" value="no"> No 
+                    		<input style="margin-left:5px" type="radio" name="oimpaired" value="yes"> Yes
+                    	
+                    </p>
+
+                  </ion-col>
+
+
+                </ion-row>
+               <button class="transparent user" (click)="back()"  ion-button>BACK</button>
+              <button class="transparent user" (click)="next()"  ion-button >NEXT</button>
+              
+              </div>
+
+               <div *ngIf="currentPage === 'terms'" class="userDetails"> <!-- terms and conditions content -->
+                <h4 text-center>Terms and Condition</h4>
+                <ion-row margin-bottom class="term-container" padding text-left>
+                  <h5>I understand that my condition on the registration card is authorization for use of the credit card on file for payment of my account for this and future stays. I agree that my liability for this bill is not waived, and agree to be held personally liable in the event that the indicated person, company, or other third party billed, fail to pay part of all of these charges.</h5>
+
+                  <h5 style="margin-top:30px;">I understand that hotel management is not responsible for money, jewels, or other valuables that have been misplaced, stolen, or left in guestrooms, meeting rooms, public areas, family and/or hotel vehicles. We are recommended deposition of valuable items at reception.</h5>
+                </ion-row>
+
+                <ion-row margin-vertical style="opacity:0.9">
+                <ion-col no-padding>
+                  <ion-item>
+                    <ion-label>I have read and accepted the Terms & Conditions of my accommodation.​</ion-label>
+                    <ion-checkbox [(ngModel)]="isTermCheked" color="dark" ></ion-checkbox>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+               <button class="transparent" (click)="back()" *ngIf="currentPage !== 'incidentalProcess' && currentPage !== 'paymentProcess' " ion-button>BACK</button>
+              <button class="transparent" (click)="next()" *ngIf="currentPage !== 'incidentalProcess' && currentPage !== 'signature' && currentPage !== 'checkinOption' && currentPage !== 'passport' " ion-button >NEXT</button>
+              
+              </div>
+            
+            <div *ngIf="currentPage === 'folio'" class="folio"> <!-- checkout folio content -->
+                <ion-row margin-bottom class="container" text-left>
+                  <ion-col text-center>
+                      <div class="person">
+                        <img src="assets/imgs/AccorHotel/folio.png" alt="">
+                      </div>
+                  </ion-col>
+                  <ion-col>
+                    <h4>Folio</h4>
+                    <p no-margin>Room No: <span margin-left>{{folioDetails?.roomNumber}}</span></p>
+                    <p no-margin>Membership No: <span margin-left></span></p>
+                    <p no-margin>A/R Number: <span margin-left></span></p>
+                    <p no-margin>Group Code: <span margin-left></span></p>
+                    <p no-margin>Company Name: <span margin-left></span></p>
+                    <p no-margin>PO REF: <span margin-left></span></p>
+                  </ion-col>
+                  <ion-col>
+                    <h4>&nbsp;</h4>
+                    <p no-margin>Arrival: <span margin-left>{{bookingDetails?.arrivalDate}}​</span></p>
+                    <p no-margin>Departure: <span margin-left>{{bookingDetails?.departureDate}}​</span></p>
+                    <p no-margin>Page No: <span margin-left>1 of 1​</span></p>
+                    <p no-margin>Invoice No: <span margin-left>1234567​</span></p>
+                    <p no-margin>Confirmation No: <span margin-left>{{folioDetails?.confirmNumber}}</span></p>
+                    <p no-margin>Cashier No: <span margin-left>123</span></p>
+                  </ion-col>
+                </ion-row>
+                <ion-row class="table" margin-bottom text-center>
+                  <ion-col col-2>
+                   <div  class="field">
+                      <p style="padding:8px">Date</p>
+                   </div>
+                    <p align="left" padding-left>02-27-19</p>
+                    <p align="left" padding-left>03-01-19</p>
+                    <p align="left" padding-left>03-01-19</p>
+                    <p align="left" padding-left>03-01-19</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+
+                  </ion-col>
+                  <ion-col col-5>
+                    <div  class="field">
+                    <p style="padding:8px">Description</p>
+                    </div>
+                    <p align="left">Incidental Payment​</p>
+                    <p align="left">Allowance Room Charge​</p>
+                    <p align="left">Room Charge, VAT 6%</p>
+                    <p align="left">Allowance Room Revenue Svc​</p>
+                    <p>&nbsp;</p>
+                    <p style="font-weight: bold" align="right">TOTAL</p>
+                    <p style="font-weight: bold" align="right">BALANCE</p>
+                  </ion-col>
+                  <ion-col col-2>
+                  <div class="field">
+                      <p style="padding:8px">Charge(s)</p>
+                  </div>
+                  <p>&nbsp;</p>
+                  <p>2,567.53</p>
+                  <p>154.05</p>
+                  <p>256.75</p>
+                  <p>&nbsp;</p>
+                  <p>2,980.33</p>
+                  <p>0</p>
+
+
+                  </ion-col>
+                  <ion-col col-3>
+                    <div class="field">
+                    <p style="padding:8px">Credit($)</p>
+                    </div>
+                    <p>3,900.00</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>3,900.00</p>
+                    <p>&nbsp;</p>
+
+
+
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col> <button float-left (click)="cancelCheckout()" ion-button clear color="light"><u>CANCEL</u></button> </ion-col>
+                    <ion-col>
+                      <button (click)="back()" ion-button color="grey" class="transparent">BACK</button>
+                      <button (click)="next()" ion-button color="grey" class="transparent">NEXT</button>
+                    </ion-col>
+                </ion-row>
+              </div>
+            
+          <div text-center *ngIf="currentPage === 'dtcm'" class="dtcm"> <!-- upload DTCM verification content -->
+              <h4>DTCM Verification</h4>
+              <hr margin-bottom>
+
+              <div class="container">
+                <p style="color:white;margin-top: 30px">Uploading Guest Information for DTCM Verification.​</p>
+                <p style="color:white;margin-top: 30px"><em class="bold">Please Wait…​</em></p>
+              </div>
+          </div> 
+          <div text-center *ngIf="currentPage === 'dtcm2'" class="dtcm"> <!-- DTCM verification successful content -->
+              <h4>DTCM Verification</h4>
+              <hr margin-bottom>
+                
+              <div class="container">
+                  <p style="color:white;margin-top:40px">UPLOAD AND VERIFICATION SUCCESSFUL!​ ​​</p> 
+                  <img src="assets/imgs/AccorHotel/cloud.png" alt="">
+                </div>
+          </div>
+          <div text-center [hidden]="currentPage !== 'signature' && currentPage !== 'signature2' && currentPage !== 'checkoutSignature'" class="signature"> <!-- signature input content -->
+              <h4>Signature</h4>
+              <hr margin-bottom>
+
+              <div text-left class="container">
+                <p>Sign here: <button (click)="clear()" float-right ion-button  icon-only >
+                    <ion-icon color="dark" name="trash"></ion-icon>
+                  </button> </p>
+                <signature-pad [options]="signaturePadOptions" (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad>
+              </div>
+          </div>
+          <div text-center *ngIf="currentPage === 'paymentAccepted'" class="checkInSuccess"> <!-- payment success content -->
+              <h4>Incidental Payment</h4>
+              <hr margin-bottom>
+
+              <div class="container">
+                <p style="color:white;margin-top:75px"><i>Payment Accepted!</i></p>
+              </div>
+          </div>
+          <div text-center *ngIf="currentPage === 'checkInSuccess'" class="checkInSuccess"> <!-- check in success content -->
+              <h4>Check-in Successful!</h4>
+              <hr margin-bottom>
+
+              <div class="container">
+              	<p style="color:white;margin-top: 30px">Room 111 checked-in successfully!</p>
+                <p style="margin-top: 20px;color:white">Please get your room key card at the front desk.</p>
+              </div>
+          </div>
+          <div text-center *ngIf="currentPage === 'roomInfo'" class="roomInfo"> <!-- input room information and last name content -->
+              <h4>Enter Room Information</h4>
+              <hr margin-bottom>
+
+              <div class="container" >
+                <ion-item margin-bottom style="margin-top: 25px;">
+                  <ion-input text-center [(ngModel)]="roomNumber" type="number" placeholder="Room Number"></ion-input>
+                </ion-item>
+                <ion-item >
+                    <ion-input text-center [(ngModel)]="lastName" type="text" placeholder="Last Name"></ion-input>
+                  </ion-item>
+              </div>
+          </div>
+          <div text-center *ngIf="currentPage === 'cardAccount'" class="checkOutSuccess"> <!-- input card details content -->
+              <h4>Payment</h4>
+              <hr margin-bottom>
+
+              <ion-row text-center>
+                    <ion-col>
+                      <button block (click)="showAmex()">
+                          <img src="assets/imgs/AccorHotel/amex.png" style="width : 50% ; height : 50%" >
+                      </button>
+                    </ion-col>
+                    <ion-col >
+                       <button block (click)="showVisa()">
+                          <img src="assets/imgs/AccorHotel/visa.png" style="width : 50% ; height : 50%">
+                      </button>
+                      </ion-col>
+                  
+                  
+                      <ion-col>
+                         <button block (click)="showMaster()">
+                          <img src="assets/imgs/AccorHotel/master.png" style="width : 50% ; height : 50%">
+                      </button>
+                      </ion-col>
+               </ion-row>
+               <ion-row text-center (click)="showJCB()">
+                      <ion-col>
+                          <button block>
+                          <img src="assets/imgs/AccorHotel/jcb.png" style="width : 50% ; height : 50%">
+                      </button>
+                        </ion-col>
+                    
+                   
+                        <ion-col >
+                          <button block (click)="showDiners()">
+                          <img src="assets/imgs/AccorHotel/diners.png" style="width : 50% ; height : 50%">
+                      </button>
+                        </ion-col>
+                        <ion-col >
+                         
+                        </ion-col>
+               </ion-row>
+          </div>
+
+
+          <div text-center *ngIf="currentPage === 'cardDetails'" class="checkOutSuccess"> <!-- input card details content -->
+              <h4>Payment</h4>
+              <hr margin-bottom>
+
+              <div *ngIf="card == 'amex'" class="container">
+                <p style="color:white"><i>Please note that your pre-authorization upon check-in will be confirmed.</i></p>
+                <p align="center" style="margin-top:15px;color:white">Total Amount: $550.00</p>
+                 <p style="margin-top:30px;text-decoration: underline;color:white"><i>Please enter card details.</i></p>
+                 <input class="ccv" [(ngModel)]="amexValue1" type="tel" maxlength="4" (keyup)="onAmexEnterCode1($event)">
+                 <input class="long-ccv" [(ngModel)]="amexValue2" type="tel" maxlength="6" (keyup)="onAmexEnterCode2($event)">
+                 <input class="long-ccv" [(ngModel)]="amexValue3" type="tel" maxlength="5" (keyup)="onAmexEnterCode3($event)">
+                 <input class="ccv" [(ngModel)]="amexValue4" type="tel" maxlength="4" placeholder="CVV" (keyup)="onAmexEnterCode4($event)">
+               </div>
+
+              <div *ngIf="card == 'visa'" class="container">
+                <p style="color:white"><i>Please note that your pre-authorization upon check-in will be confirmed.</i></p>
+                <p align="center" style="margin-top:15px;color:white">Total Amount: $550.00</p>
+                 <p style="margin-top:30px;text-decoration: underline;color:white"><i>Please enter card details.</i></p>
+                 <input class="ccv" [(ngModel)]="checkOutValue1" type="tel" maxlength="4" (keyup)="onEnterCode($event)">
+                 <input class="ccv" [(ngModel)]="checkOutValue2" type="tel" maxlength="4" (keyup)="onEnterCode($event)">
+                 <input class="ccv" [(ngModel)]="checkOutValue3" type="tel" maxlength="4" (keyup)="onEnterCode($event)">
+                 <input class="ccv" [(ngModel)]="checkOutValue4" type="tel" maxlength="4" (keyup)="onEnterCode($event)">
+                 <input class="ccv" [(ngModel)]="checkOutValue5" type="tel" maxlength="3" placeholder="CVV" (keyup)="onEnterCode($event)">
+               </div>
+
+              <div *ngIf="card == 'master'" class="container">
+                <p style="color:white"><i>Please note that your pre-authorization upon check-in will be confirmed.</i></p>
+                <p align="center" style="margin-top:15px;color:white">Total Amount: $550.00</p>
+                 <p style="margin-top:30px;text-decoration: underline;color:white"><i>Please enter card details.</i></p>
+                 <input class="ccv" [(ngModel)]="checkOutValue1" type="tel" maxlength="4" (keyup)="onEnterCode($event)">
+                 <input class="ccv" [(ngModel)]="checkOutValue2" type="tel" maxlength="4" (keyup)="onEnterCode($event)">
+                 <input class="ccv" [(ngModel)]="checkOutValue3" type="tel" maxlength="4" (keyup)="onEnterCode($event)">
+                 <input class="ccv" [(ngModel)]="checkOutValue4" type="tel" maxlength="4" (keyup)="onEnterCode($event)">
+                 <input class="ccv" [(ngModel)]="checkOutValue5" type="tel" maxlength="3" placeholder="CVV" (keyup)="onEnterCode($event)">
+               </div>
+
+                <div *ngIf="card == 'jcb'" class="container">
+                <p style="color:white"><i>Please note that your pre-authorization upon check-in will be confirmed.</i></p>
+                <p align="center" style="margin-top:15px;color:white">Total Amount: $550.00</p>
+                 <p style="margin-top:30px;text-decoration: underline;color:white"><i>Please enter card details.</i></p>
+                 <input class="ccv" [(ngModel)]="checkOutValue1" type="tel" maxlength="4" (keyup)="onEnterCode($event)">
+                 <input class="ccv" [(ngModel)]="checkOutValue2" type="tel" maxlength="4" (keyup)="onEnterCode($event)">
+                 <input class="ccv" [(ngModel)]="checkOutValue3" type="tel" maxlength="4" (keyup)="onEnterCode($event)">
+                 <input class="ccv" [(ngModel)]="checkOutValue4" type="tel" maxlength="4" (keyup)="onEnterCode($event)">
+                 <input class="ccv" [(ngModel)]="checkOutValue5" type="tel" maxlength="3" placeholder="CVV" (keyup)="onEnterCode($event)">
+               </div>
+
+                <div *ngIf="card == 'diners'" class="container">
+                <p style="color:white"><i>Please note that your pre-authorization upon check-in will be confirmed.</i></p>
+                <p align="center" style="margin-top:15px;color:white">Total Amount: $550.00</p>
+                 <p style="margin-top:30px;text-decoration: underline;color:white"><i>Please enter card details.</i></p>
+                 <input class="long-ccv" [(ngModel)]="dinersValue1" type="tel" maxlength="5" (keyup)="onDinersEnterCode1($event)">
+                 <input class="ccv" [(ngModel)]="dinersValue2" type="tel" maxlength="4" (keyup)="onDinersEnterCode2($event)">
+                 <input class="long-ccv" [(ngModel)]="dinersValue3" type="tel" maxlength="5" (keyup)="onDinersEnterCode3($event)">
+                 <input class="ccv" [(ngModel)]="dinersValue4" type="tel" maxlength="3" placeholder="CVV" (keyup)="onDinersEnterCode4($event)">
+               </div>
+          </div>
+
+          <div text-center *ngIf="currentPage === 'incidentalAccount'" class="checkOutSuccess"> <!-- input card details content -->
+              <h4>Payment</h4>
+              <hr margin-bottom>
+
+              <ion-row text-center>
+                    <ion-col>
+                      <button block (click)="showAmex()">
+                          <img src="assets/imgs/AccorHotel/amex.png" style="width : 50% ; height : 50%" >
+                      </button>
+                    </ion-col>
+                    <ion-col >
+                       <button block (click)="showVisa()">
+                          <img src="assets/imgs/AccorHotel/visa.png" style="width : 50% ; height : 50%">
+                      </button>
+                      </ion-col>
+                  
+                  
+                      <ion-col>
+                         <button block (click)="showMaster()">
+                          <img src="assets/imgs/AccorHotel/master.png" style="width : 50% ; height : 50%">
+                      </button>
+                      </ion-col>
+               </ion-row>
+               <ion-row text-center (click)="showJCB()">
+                      <ion-col>
+                          <button block>
+                          <img src="assets/imgs/AccorHotel/jcb.png" style="width : 50% ; height : 50%">
+                      </button>
+                        </ion-col>
+                    
+                   
+                        <ion-col >
+                          <button block (click)="showDiners()">
+                          <img src="assets/imgs/AccorHotel/diners.png" style="width : 50% ; height : 50%">
+                      </button>
+                        </ion-col>
+                        <ion-col >
+                         
+                        </ion-col>
+               </ion-row>
+          </div>
+
+          <div text-center *ngIf="currentPage === 'incidental'" class="checkOutSuccess"> <!-- input card details for incidental content -->
+              <h4>Incidental Payment</h4>
+              <hr margin-bottom>
+
+              <div *ngIf="card == 'amex'" class="container">
+                 <p style="color:white"><i>An incidental payment of $500.00 is required to guarantee your stay.</i></p>
+
+                 <p style="margin-top:30px;text-decoration: underline;color:white"><i>Please enter card details.</i></p>
+                 <input class="ccv" [(ngModel)]="amexValue1" type="tel" maxlength="4" (keyup)="onAmexEnterCode1($event)">
+                 <input class="long-ccv" [(ngModel)]="amexValue2" type="tel" maxlength="6" (keyup)="onAmexEnterCode2($event)">
+                 <input class="long-ccv" [(ngModel)]="amexValue3" type="tel" maxlength="5" (keyup)="onAmexEnterCode3($event)">
+                 <input class="ccv" [(ngModel)]="amexValue4" type="tel" maxlength="4" placeholder="CVV" (keyup)="onAmexEnterCode4($event)">
+               </div>
+
+              <div *ngIf="card == 'visa'" class="container">
+                <p style="color:white"><i>An incidental payment of $500.00 is required to guarantee your stay.</i></p>
+
+                <p style="margin-top:30px;text-decoration: underline;color:white"><i>Please enter card details.</i></p>
+                 <input class="ccv" [(ngModel)]="checkInValue1" type="tel" maxlength="4" (keyup)="onEnterCode($event)">
+                 <input class="ccv" [(ngModel)]="checkInValue2" type="tel" maxlength="4" (keyup)="onEnterCode($event)">
+                 <input class="ccv" [(ngModel)]="checkInValue3" type="tel" maxlength="4" (keyup)="onEnterCode($event)">
+                 <input class="ccv" [(ngModel)]="checkInValue4" type="tel" maxlength="4" (keyup)="onEnterCode($event)">
+                 <input class="ccv" [(ngModel)]="checkInValue5" type="tel" maxlength="3" placeholder="CVV" (keyup)="onEnterCode($event)">
+               </div>
+
+              <div *ngIf="card == 'master'" class="container">
+                 <p style="color:white"><i>An incidental payment of $500.00 is required to guarantee your stay.</i></p>
+
+                 <p style="margin-top:30px;text-decoration: underline;color:white"><i>Please enter card details.</i></p>
+                <input class="ccv" [(ngModel)]="checkInValue1" type="tel" maxlength="4" (keyup)="onEnterCode($event)">
+                 <input class="ccv" [(ngModel)]="checkInValue2" type="tel" maxlength="4" (keyup)="onEnterCode($event)">
+                 <input class="ccv" [(ngModel)]="checkInValue3" type="tel" maxlength="4" (keyup)="onEnterCode($event)">
+                 <input class="ccv" [(ngModel)]="checkInValue4" type="tel" maxlength="4" (keyup)="onEnterCode($event)">
+                 <input class="ccv" [(ngModel)]="checkInValue5" type="tel" maxlength="3" placeholder="CVV" (keyup)="onEnterCode($event)">
+               </div>
+
+                <div *ngIf="card == 'jcb'" class="container">
+                 <p style="color:white"><i>An incidental payment of $500.00 is required to guarantee your stay.</i></p>
+
+                 <p style="margin-top:30px;text-decoration: underline;color:white"><i>Please enter card details.</i></p>
+                 <input class="ccv" [(ngModel)]="checkInValue1" type="tel" maxlength="4" (keyup)="onEnterCode($event)">
+                 <input class="ccv" [(ngModel)]="checkInValue2" type="tel" maxlength="4" (keyup)="onEnterCode($event)">
+                 <input class="ccv" [(ngModel)]="checkInValue3" type="tel" maxlength="4" (keyup)="onEnterCode($event)">
+                 <input class="ccv" [(ngModel)]="checkInValue4" type="tel" maxlength="4" (keyup)="onEnterCode($event)">
+                 <input class="ccv" [(ngModel)]="checkInValue5" type="tel" maxlength="3" placeholder="CVV" (keyup)="onEnterCode($event)">
+               </div>
+
+                <div *ngIf="card == 'diners'" class="container">
+                 <p style="color:white"><i>An incidental payment of $500.00 is required to guarantee your stay.</i></p>
+
+                 <p style="margin-top:30px;text-decoration: underline;color:white"><i>Please enter card details.</i></p>
+                 <input class="long-ccv" [(ngModel)]="dinersValue1" type="tel" maxlength="5" (keyup)="onDinersEnterCode1($event)">
+                 <input class="ccv" [(ngModel)]="dinersValue2" type="tel" maxlength="4" (keyup)="onDinersEnterCode2($event)">
+                 <input class="long-ccv" [(ngModel)]="dinersValue3" type="tel" maxlength="5" (keyup)="onDinersEnterCode3($event)">
+                 <input class="ccv" [(ngModel)]="dinersValue4" type="tel" maxlength="3" placeholder="CVV" (keyup)="onDinersEnterCode4($event)">
+               </div>
+          </div>
+          <div text-center *ngIf="currentPage === 'incidentalProcess'" class="checkOutSuccess"> <!-- incidental payment processing content -->
+              <h4>Incidental Payment</h4>
+              <hr margin-bottom>
+
+              <div class="container">
+                <p style="color:white;margin-top:30px"><i>Processing incidental payment...</i></p>
+                 <p style="color:white;margin-top:30px"><i>Please wait...</i></p>
+               </div>
+          </div>
+          <div text-center *ngIf="currentPage === 'paymentProcess'" class="checkOutSuccess"> <!-- homepayment processing content -->
+              <h4>Payment</h4>
+              <hr margin-bottom>
+
+              <div class="container">
+                <p style="color:white;margin-top:45px"><i>Processing payment.</i></p>
+                 <p style="margin-top:15px;color:white"><i>Please wait...</i></p>
+               </div>
+          </div>
+           
+          <div text-center *ngIf="currentPage === 'paymentAccepted2'" class="checkOutSuccess"> <!-- payment accepted content -->
+              <h4>Payment</h4>
+              <hr margin-bottom>
+
+              <div class="container">
+                <p style="color:white;margin-top:65px;"><i>Payment Accepted!</i></p>
+              </div>
+          </div>
+          <div text-center *ngIf="currentPage === 'checkOutSuccess'" class="checkOutSuccess"> <!-- checkout success content -->
+              <h4>Check-out Successful!</h4>
+              <hr margin-bottom>
+
+              <div class="container">
+                <p style="color:white;margin-top: 50px"><i>Room {{folioDetails?.roomNumber}} successfully checked-out!</i></p>
+                 <p style="margin-top:30px;color:white"><i>Please return your key card at the front desk.</i></p>
+              </div>
+          </div>
+
+
+
+          </div>
+          <ion-row text-center margin-bottom *ngIf="currentPage == 'checkInSuccess' || currentPage == 'checkOutSuccess'">
+              <ion-col> <button  (click)="quit()" ion-button  class="transparent">EXIT</button> </ion-col>
+            </ion-row> <!-- button rows content -->
+
+             
+
+          <ion-row margin-bottom *ngIf="currentPage !== 'dtcm' && currentPage !== 'home' && currentPage !== 'userDetails' && currentPage !== 'checkInSuccess' && currentPage !== 'folio'  && currentPage !== 'terms' && currentPage !== 'checkOutSuccess' && currentPage !== 'paymentProcess' && currentPage !== 'settings'" >
+
+            <ion-col col-4>
+
+             <button float-left (click)="cancelCheckout()" ion-button clear color="light" *ngIf="currentPage !== 'incidentalProcess' && currentPage !== 'paymentProcess' && currentPage !== 'checkinOption' && currentPage !== 'confirmNumber' && currentPage !== 'verification' && currentPage !== 'passport' && currentPage !== 'scanComplete' && currentPage !== 'dtcm2' && currentPage !== 'signature' && currentPage !== 'incidentalAccount' && currentPage !== 'incidental' && currentPage !== 'signature2' && currentPage !== 'paymentAccepted' && currentPage !== 'paymentAccepted2' && currentPage !== 'settings'"><u>CANCEL</u></button> 
+
+             <button float-left (click)="cancelCheckin()" ion-button clear color="light" *ngIf="currentPage !== 'incidentalProcess' && currentPage !== 'paymentProcess' && currentPage !== 'roomInfo' && currentPage !== 'cardAccount' && currentPage !== 'cardDetails' && currentPage !== 'checkoutSignature' && currentPage !== 'paymentAccepted2' && currentPage !== 'paymentAccepted' && currentPage !== 'incidentalAccount' && currentPage !== 'settings'"><u>CANCEL</u></button>
+
+
+            </ion-col>
+
+            <ion-col col-8>
+              <button class="transparent" (click)="back()" *ngIf="currentPage !== 'incidentalProcess' && currentPage !== 'paymentProcess' && currentPage !== 'settings'" ion-button>BACK</button>
+              <button class="transparent" (click)="next()" *ngIf="currentPage !== 'incidentalProcess' && currentPage !== 'paymentProcess' && currentPage !== 'signature' && currentPage !== 'checkinOption' && currentPage !== 'passport' && currentPage !== 'cardAccount' && currentPage !== 'incidentalAccount' && currentPage !== 'settings' " ion-button >NEXT</button>
+              <button  class="transparent" (click)="next()" *ngIf="currentPage === 'signature' || currentPage === 'userDetails'" ion-button>Next</button>
+              <button  class="transparent" (click)="back()" *ngIf="currentPage === 'userDetails'" ion-button>Back</button>      
+              <button  class="transparent" (click)="next()" *ngIf="currentPage === 'passport'" ion-button >Capture</button>
+            </ion-col>
+
+          </ion-row> <!-- powered by metasphere logo -->
+          <div *ngIf="currentPage !=='settings'">
+          <ion-row *ngIf="currentPage !== 'terms' && currentPage !== 'userDetails' && currentPage !== 'folio' && currentPage !== 'home' "> <!-- default size -->
+              <img class="small-logo" src="assets/imgs/AccorHotel/metasphere.png" alt="metasphere"> 
+          </ion-row>
+          <ion-row *ngIf="currentPage === 'terms'  || currentPage === 'folio' "> <!-- lower logo position -->
+              <img class="lower-logo" src="assets/imgs/AccorHotel/metasphere.png" alt="metasphere">
+          </ion-row>
+          <ion-row *ngIf="currentPage === 'home'">
+              <img class="lowest-logo" src="assets/imgs/AccorHotel/metasphere.png" alt="metasphere"> <!-- lower logo position for home -->
+          </ion-row>
+          <ion-row *ngIf="currentPage === 'userDetails'">
+              <img class="low-lowest-logo" src="assets/imgs/AccorHotel/metasphere.png" alt="metasphere"> <!-- lowest logo position for user details -->
+          </ion-row>
+      	  </div>
+        </div>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>
