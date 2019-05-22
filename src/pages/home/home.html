@@ -30,12 +30,12 @@ position: fixed;">
 
               <div class="container">
                 <ion-row>
-                <ion-col col-3 style="border-right: 1px solid white;">
+                <ion-col col-3 style="border-right: 1px solid black;">
               	<img style="height:100px" src='assets/imgs/AccorHotel/pass.png' alt="">
               </ion-col>
               <ion-col col-9>
-              	 <p style="color:white;text-align:left">Please scan the machine-readable zone (MRZ*) of your passport.</p>
-                <p style="color:white;text-align:left"><i>*combinations below passport information and photo.</i></p>
+              	 <p style="color:black;text-align:left">Please scan the machine-readable zone (MRZ*) of your passport.</p>
+                <p style="color:black;text-align:left"><i>*combinations below passport information and photo.</i></p>
               </ion-col>
             </ion-row>
               </div>
@@ -75,12 +75,12 @@ position: fixed;">
             <div *ngIf="currentPage === 'settings'" class="buttons"> <!-- verification content -->
               <h4 text-center>Configuration</h4>
               <hr margin-bottom>
-              <p text-center style="color:white">Please browse for the image file and click the Load Button.</p>
+              <p text-center style="color:black">Please browse for the image file and click the Load Button.</p>
               <h6 text-left margin-top>File Path:</h6>
-              <p text-left style="color:white">{{uri}}</p>
-              <p text-left style="color:white">{{config}}</p>
-              <!-- <p text-left style="color:white">{{config2}}</p>
-              <p text-left style="color:white">{{config3}}</p> -->
+              <p text-left style="color:black">{{uri}}</p>
+              <p text-left style="color:black">{{config}}</p>
+              <!-- <p text-left style="color:black">{{config2}}</p>
+              <p text-left style="color:black">{{config3}}</p> -->
                <ion-row text-center>
                 <ion-col>
                   <button style="padding:5px 120px 5px 120px" (click)="Browse()" ion-button large class="transparent">BROWSE</button>
@@ -96,9 +96,6 @@ position: fixed;">
               <ion-row text-center margin-bottom *ngIf="currentPage === 'settings'">
               <ion-col> <button  (click)="settingsBack()" ion-button  class="transparent">BACK</button> </ion-col>
             </ion-row>
-            <ion-row> <!-- default size -->
-              <img class="small-logo" src="assets/imgs/AccorHotel/metasphere.png" alt="metasphere"> 
-          </ion-row>
             </div>
 
             <div text-center class="checkinOption" *ngIf="currentPage === 'checkinOption'"> <!-- check in options content -->
@@ -168,28 +165,28 @@ position: fixed;">
 
               <div class="container">
                 <ion-row>
-               	<ion-col col-6 style="border-right: 1px white solid">
-                <p style="color:white" align="right">First Name:</p>
-                <p style="color:white" align="right">Last Name:</p>
-                <p style="color:white" align="right">Arrival Date:</p>
-                <p style="color:white" align="right">Departure Date:</p>
-                <p style="color:white" align="right">Total Room Night(s):</p>
-                <p style="color:white" align="right">Room Type:</p>
-                <p style="color:white" align="right">Room Number:</p>
-                <p style="color:white" align="right">Confirmation Number:</p>
-                <p style="color:white" align="right">Add-ons:</p>
+               	<ion-col col-6 style="border-right: 1px black solid">
+                <p style="color:black" align="right">First Name:</p>
+                <p style="color:black" align="right">Last Name:</p>
+                <p style="color:black" align="right">Arrival Date:</p>
+                <p style="color:black" align="right">Departure Date:</p>
+                <p style="color:black" align="right">Total Room Night(s):</p>
+                <p style="color:black" align="right">Room Type:</p>
+                <p style="color:black" align="right">Room Number:</p>
+                <p style="color:black" align="right">Confirmation Number:</p>
+                <p style="color:black" align="right">Add-ons:</p>
 
             </ion-col>
             <ion-col col-6>
-                <p style="color:white" align="left"> <span margin-left>{{bookingDetails?.firstName}}</span></p>
-                <p style="color:white" align="left"> <span margin-left>{{bookingDetails?.lastName}}</span></p>
-                <p style="color:white" align="left"><span margin-left>{{bookingDetails?.arrivalDate}}</span></p>
-                <p style="color:white" align="left"> <span margin-left>{{bookingDetails?.departureDate}}</span></p>
-                <p style="color:white" align="left"><span margin-left>{{bookingDetails?.totalRoomNights}}</span></p>
-                <p style="color:white" align="left"> <span margin-left>{{bookingDetails?.type}}</span></p>
-                <p style="color:white" align="left"> <span margin-left>111</span></p>
-                <p style="color:white" align="left"> <span margin-left>12345</span></p>
-                <p style="color:white" align="left"><span margin-left>{{bookingDetails?.addOns}}</span></p>
+                <p style="color:black" align="left"> <span margin-left>{{bookingDetails?.firstName}}</span></p>
+                <p style="color:black" align="left"> <span margin-left>{{bookingDetails?.lastName}}</span></p>
+                <p style="color:black" align="left"><span margin-left>{{bookingDetails?.arrivalDate}}</span></p>
+                <p style="color:black" align="left"> <span margin-left>{{bookingDetails?.departureDate}}</span></p>
+                <p style="color:black" align="left"><span margin-left>{{bookingDetails?.totalRoomNights}}</span></p>
+                <p style="color:black" align="left"> <span margin-left>{{bookingDetails?.type}}</span></p>
+                <p style="color:black" align="left"> <span margin-left>111</span></p>
+                <p style="color:black" align="left"> <span margin-left>12345</span></p>
+                <p style="color:black" align="left"><span margin-left>{{bookingDetails?.addOns}}</span></p>
             </ion-col>
         </ion-row>
 
@@ -209,7 +206,7 @@ position: fixed;">
               <hr margin-bottom>
 
               <div class="container">
-                <p style="color:white;margin-top:65px;"><i>Scanning complete!</i></p>
+                <p style="color:black;margin-top:65px;"><i>Scanning complete!</i></p>
               </div>
           </div>
 
@@ -446,7 +443,7 @@ position: fixed;">
                   </ion-col>
                 </ion-row>
                 <ion-row>
-                    <ion-col> <button float-left (click)="cancelCheckout()" ion-button clear color="light"><u>CANCEL</u></button> </ion-col>
+                    <ion-col> <button float-left class="cancel" (click)="cancelCheckout()" ion-button clear color="light">CANCEL</button> </ion-col>
                     <ion-col>
                       <button (click)="back()" ion-button color="grey" class="transparent">BACK</button>
                       <button (click)="next()" ion-button color="grey" class="transparent">NEXT</button>
@@ -459,8 +456,8 @@ position: fixed;">
               <hr margin-bottom>
 
               <div class="container">
-                <p style="color:white;margin-top: 30px">Uploading Guest Information for DTCM Verification.​</p>
-                <p style="color:white;margin-top: 30px"><em class="bold">Please Wait…​</em></p>
+                <p style="color:black;margin-top: 30px">Uploading Guest Information for DTCM Verification.​</p>
+                <p style="color:black;margin-top: 30px"><em class="bold">Please Wait…​</em></p>
               </div>
           </div> 
           <div text-center *ngIf="currentPage === 'dtcm2'" class="dtcm"> <!-- DTCM verification successful content -->
@@ -468,7 +465,7 @@ position: fixed;">
               <hr margin-bottom>
                 
               <div class="container">
-                  <p style="color:white;margin-top:40px">UPLOAD AND VERIFICATION SUCCESSFUL!​ ​​</p> 
+                  <p style="color:black;margin-top:40px">UPLOAD AND VERIFICATION SUCCESSFUL!​ ​​</p> 
                   <img src="assets/imgs/AccorHotel/cloud.png" alt="">
                 </div>
           </div>
@@ -488,7 +485,7 @@ position: fixed;">
               <hr margin-bottom>
 
               <div class="container">
-                <p style="color:white;margin-top:75px"><i>Payment Accepted!</i></p>
+                <p style="color:black;margin-top:75px"><i>Payment Accepted!</i></p>
               </div>
           </div>
           <div text-center *ngIf="currentPage === 'checkInSuccess'" class="checkInSuccess"> <!-- check in success content -->
@@ -496,8 +493,8 @@ position: fixed;">
               <hr margin-bottom>
 
               <div class="container">
-              	<p style="color:white;margin-top: 30px">Room 111 checked-in successfully!</p>
-                <p style="margin-top: 20px;color:white">Please get your room key card at the front desk.</p>
+              	<p style="color:black;margin-top: 30px">Room 111 checked-in successfully!</p>
+                <p style="margin-top: 20px;color:black">Please get your room key card at the front desk.</p>
               </div>
           </div>
           <div text-center *ngIf="currentPage === 'roomInfo'" class="roomInfo"> <!-- input room information and last name content -->
@@ -561,9 +558,9 @@ position: fixed;">
               <hr margin-bottom>
 
               <div *ngIf="card == 'amex'" class="container">
-                <p style="color:white"><i>Please note that your pre-authorization upon check-in will be confirmed.</i></p>
-                <p align="center" style="margin-top:15px;color:white">Total Amount: $550.00</p>
-                 <p style="margin-top:30px;text-decoration: underline;color:white"><i>Please enter card details.</i></p>
+                <p style="color:black"><i>Please note that your pre-authorization upon check-in will be confirmed.</i></p>
+                <p align="center" style="margin-top:15px;color:black">Total Amount: $550.00</p>
+                 <p style="margin-top:30px;text-decoration: underline;color:black"><i>Please enter card details.</i></p>
                  <input class="ccv" [(ngModel)]="amexValue1" type="tel" maxlength="4" (keyup)="onAmexEnterCode1($event)">
                  <input class="long-ccv" [(ngModel)]="amexValue2" type="tel" maxlength="6" (keyup)="onAmexEnterCode2($event)">
                  <input class="long-ccv" [(ngModel)]="amexValue3" type="tel" maxlength="5" (keyup)="onAmexEnterCode3($event)">
@@ -571,9 +568,9 @@ position: fixed;">
                </div>
 
               <div *ngIf="card == 'visa'" class="container">
-                <p style="color:white"><i>Please note that your pre-authorization upon check-in will be confirmed.</i></p>
-                <p align="center" style="margin-top:15px;color:white">Total Amount: $550.00</p>
-                 <p style="margin-top:30px;text-decoration: underline;color:white"><i>Please enter card details.</i></p>
+                <p style="color:black"><i>Please note that your pre-authorization upon check-in will be confirmed.</i></p>
+                <p align="center" style="margin-top:15px;color:black">Total Amount: $550.00</p>
+                 <p style="margin-top:30px;text-decoration: underline;color:black"><i>Please enter card details.</i></p>
                  <input class="ccv" [(ngModel)]="checkOutValue1" type="tel" maxlength="4" (keyup)="onEnterCode($event)">
                  <input class="ccv" [(ngModel)]="checkOutValue2" type="tel" maxlength="4" (keyup)="onEnterCode($event)">
                  <input class="ccv" [(ngModel)]="checkOutValue3" type="tel" maxlength="4" (keyup)="onEnterCode($event)">
@@ -582,9 +579,9 @@ position: fixed;">
                </div>
 
               <div *ngIf="card == 'master'" class="container">
-                <p style="color:white"><i>Please note that your pre-authorization upon check-in will be confirmed.</i></p>
-                <p align="center" style="margin-top:15px;color:white">Total Amount: $550.00</p>
-                 <p style="margin-top:30px;text-decoration: underline;color:white"><i>Please enter card details.</i></p>
+                <p style="color:black"><i>Please note that your pre-authorization upon check-in will be confirmed.</i></p>
+                <p align="center" style="margin-top:15px;color:black">Total Amount: $550.00</p>
+                 <p style="margin-top:30px;text-decoration: underline;color:black"><i>Please enter card details.</i></p>
                  <input class="ccv" [(ngModel)]="checkOutValue1" type="tel" maxlength="4" (keyup)="onEnterCode($event)">
                  <input class="ccv" [(ngModel)]="checkOutValue2" type="tel" maxlength="4" (keyup)="onEnterCode($event)">
                  <input class="ccv" [(ngModel)]="checkOutValue3" type="tel" maxlength="4" (keyup)="onEnterCode($event)">
@@ -593,9 +590,9 @@ position: fixed;">
                </div>
 
                 <div *ngIf="card == 'jcb'" class="container">
-                <p style="color:white"><i>Please note that your pre-authorization upon check-in will be confirmed.</i></p>
-                <p align="center" style="margin-top:15px;color:white">Total Amount: $550.00</p>
-                 <p style="margin-top:30px;text-decoration: underline;color:white"><i>Please enter card details.</i></p>
+                <p style="color:black"><i>Please note that your pre-authorization upon check-in will be confirmed.</i></p>
+                <p align="center" style="margin-top:15px;color:black">Total Amount: $550.00</p>
+                 <p style="margin-top:30px;text-decoration: underline;color:black"><i>Please enter card details.</i></p>
                  <input class="ccv" [(ngModel)]="checkOutValue1" type="tel" maxlength="4" (keyup)="onEnterCode($event)">
                  <input class="ccv" [(ngModel)]="checkOutValue2" type="tel" maxlength="4" (keyup)="onEnterCode($event)">
                  <input class="ccv" [(ngModel)]="checkOutValue3" type="tel" maxlength="4" (keyup)="onEnterCode($event)">
@@ -604,9 +601,9 @@ position: fixed;">
                </div>
 
                 <div *ngIf="card == 'diners'" class="container">
-                <p style="color:white"><i>Please note that your pre-authorization upon check-in will be confirmed.</i></p>
-                <p align="center" style="margin-top:15px;color:white">Total Amount: $550.00</p>
-                 <p style="margin-top:30px;text-decoration: underline;color:white"><i>Please enter card details.</i></p>
+                <p style="color:black"><i>Please note that your pre-authorization upon check-in will be confirmed.</i></p>
+                <p align="center" style="margin-top:15px;color:black">Total Amount: $550.00</p>
+                 <p style="margin-top:30px;text-decoration: underline;color:black"><i>Please enter card details.</i></p>
                  <input class="long-ccv" [(ngModel)]="dinersValue1" type="tel" maxlength="5" (keyup)="onDinersEnterCode1($event)">
                  <input class="ccv" [(ngModel)]="dinersValue2" type="tel" maxlength="4" (keyup)="onDinersEnterCode2($event)">
                  <input class="long-ccv" [(ngModel)]="dinersValue3" type="tel" maxlength="5" (keyup)="onDinersEnterCode3($event)">
@@ -661,9 +658,9 @@ position: fixed;">
               <hr margin-bottom>
 
               <div *ngIf="card == 'amex'" class="container">
-                 <p style="color:white"><i>An incidental payment of $500.00 is required to guarantee your stay.</i></p>
+                 <p style="color:black"><i>An incidental payment of $500.00 is required to guarantee your stay.</i></p>
 
-                 <p style="margin-top:30px;text-decoration: underline;color:white"><i>Please enter card details.</i></p>
+                 <p style="margin-top:30px;text-decoration: underline;color:black"><i>Please enter card details.</i></p>
                  <input class="ccv" [(ngModel)]="amexValue1" type="tel" maxlength="4" (keyup)="onAmexEnterCode1($event)">
                  <input class="long-ccv" [(ngModel)]="amexValue2" type="tel" maxlength="6" (keyup)="onAmexEnterCode2($event)">
                  <input class="long-ccv" [(ngModel)]="amexValue3" type="tel" maxlength="5" (keyup)="onAmexEnterCode3($event)">
@@ -671,9 +668,9 @@ position: fixed;">
                </div>
 
               <div *ngIf="card == 'visa'" class="container">
-                <p style="color:white"><i>An incidental payment of $500.00 is required to guarantee your stay.</i></p>
+                <p style="color:black"><i>An incidental payment of $500.00 is required to guarantee your stay.</i></p>
 
-                <p style="margin-top:30px;text-decoration: underline;color:white"><i>Please enter card details.</i></p>
+                <p style="margin-top:30px;text-decoration: underline;color:black"><i>Please enter card details.</i></p>
                  <input class="ccv" [(ngModel)]="checkInValue1" type="tel" maxlength="4" (keyup)="onEnterCode($event)">
                  <input class="ccv" [(ngModel)]="checkInValue2" type="tel" maxlength="4" (keyup)="onEnterCode($event)">
                  <input class="ccv" [(ngModel)]="checkInValue3" type="tel" maxlength="4" (keyup)="onEnterCode($event)">
@@ -682,9 +679,9 @@ position: fixed;">
                </div>
 
               <div *ngIf="card == 'master'" class="container">
-                 <p style="color:white"><i>An incidental payment of $500.00 is required to guarantee your stay.</i></p>
+                 <p style="color:black"><i>An incidental payment of $500.00 is required to guarantee your stay.</i></p>
 
-                 <p style="margin-top:30px;text-decoration: underline;color:white"><i>Please enter card details.</i></p>
+                 <p style="margin-top:30px;text-decoration: underline;color:black"><i>Please enter card details.</i></p>
                 <input class="ccv" [(ngModel)]="checkInValue1" type="tel" maxlength="4" (keyup)="onEnterCode($event)">
                  <input class="ccv" [(ngModel)]="checkInValue2" type="tel" maxlength="4" (keyup)="onEnterCode($event)">
                  <input class="ccv" [(ngModel)]="checkInValue3" type="tel" maxlength="4" (keyup)="onEnterCode($event)">
@@ -693,9 +690,9 @@ position: fixed;">
                </div>
 
                 <div *ngIf="card == 'jcb'" class="container">
-                 <p style="color:white"><i>An incidental payment of $500.00 is required to guarantee your stay.</i></p>
+                 <p style="color:black"><i>An incidental payment of $500.00 is required to guarantee your stay.</i></p>
 
-                 <p style="margin-top:30px;text-decoration: underline;color:white"><i>Please enter card details.</i></p>
+                 <p style="margin-top:30px;text-decoration: underline;color:black"><i>Please enter card details.</i></p>
                  <input class="ccv" [(ngModel)]="checkInValue1" type="tel" maxlength="4" (keyup)="onEnterCode($event)">
                  <input class="ccv" [(ngModel)]="checkInValue2" type="tel" maxlength="4" (keyup)="onEnterCode($event)">
                  <input class="ccv" [(ngModel)]="checkInValue3" type="tel" maxlength="4" (keyup)="onEnterCode($event)">
@@ -704,9 +701,9 @@ position: fixed;">
                </div>
 
                 <div *ngIf="card == 'diners'" class="container">
-                 <p style="color:white"><i>An incidental payment of $500.00 is required to guarantee your stay.</i></p>
+                 <p style="color:black"><i>An incidental payment of $500.00 is required to guarantee your stay.</i></p>
 
-                 <p style="margin-top:30px;text-decoration: underline;color:white"><i>Please enter card details.</i></p>
+                 <p style="margin-top:30px;text-decoration: underline;color:black"><i>Please enter card details.</i></p>
                  <input class="long-ccv" [(ngModel)]="dinersValue1" type="tel" maxlength="5" (keyup)="onDinersEnterCode1($event)">
                  <input class="ccv" [(ngModel)]="dinersValue2" type="tel" maxlength="4" (keyup)="onDinersEnterCode2($event)">
                  <input class="long-ccv" [(ngModel)]="dinersValue3" type="tel" maxlength="5" (keyup)="onDinersEnterCode3($event)">
@@ -718,8 +715,8 @@ position: fixed;">
               <hr margin-bottom>
 
               <div class="container">
-                <p style="color:white;margin-top:30px"><i>Processing incidental payment...</i></p>
-                 <p style="color:white;margin-top:30px"><i>Please wait...</i></p>
+                <p style="color:black;margin-top:30px"><i>Processing incidental payment...</i></p>
+                 <p style="color:black;margin-top:30px"><i>Please wait...</i></p>
                </div>
           </div>
           <div text-center *ngIf="currentPage === 'paymentProcess'" class="checkOutSuccess"> <!-- homepayment processing content -->
@@ -727,8 +724,8 @@ position: fixed;">
               <hr margin-bottom>
 
               <div class="container">
-                <p style="color:white;margin-top:45px"><i>Processing payment.</i></p>
-                 <p style="margin-top:15px;color:white"><i>Please wait...</i></p>
+                <p style="color:black;margin-top:45px"><i>Processing payment.</i></p>
+                 <p style="margin-top:15px;color:black"><i>Please wait...</i></p>
                </div>
           </div>
            
@@ -737,7 +734,7 @@ position: fixed;">
               <hr margin-bottom>
 
               <div class="container">
-                <p style="color:white;margin-top:65px;"><i>Payment Accepted!</i></p>
+                <p style="color:black;margin-top:65px;"><i>Payment Accepted!</i></p>
               </div>
           </div>
           <div text-center *ngIf="currentPage === 'checkOutSuccess'" class="checkOutSuccess"> <!-- checkout success content -->
@@ -745,8 +742,8 @@ position: fixed;">
               <hr margin-bottom>
 
               <div class="container">
-                <p style="color:white;margin-top: 50px"><i>Room {{folioDetails?.roomNumber}} successfully checked-out!</i></p>
-                 <p style="margin-top:30px;color:white"><i>Please return your key card at the front desk.</i></p>
+                <p style="color:black;margin-top: 50px"><i>Room {{folioDetails?.roomNumber}} successfully checked-out!</i></p>
+                 <p style="margin-top:30px;color:black"><i>Please return your key card at the front desk.</i></p>
               </div>
           </div>
 
@@ -763,9 +760,9 @@ position: fixed;">
 
             <ion-col col-4>
 
-             <button float-left (click)="cancelCheckout()" ion-button clear color="light" *ngIf="currentPage !== 'incidentalProcess' && currentPage !== 'paymentProcess' && currentPage !== 'checkinOption' && currentPage !== 'confirmNumber' && currentPage !== 'verification' && currentPage !== 'passport' && currentPage !== 'scanComplete' && currentPage !== 'dtcm2' && currentPage !== 'signature' && currentPage !== 'incidentalAccount' && currentPage !== 'incidental' && currentPage !== 'signature2' && currentPage !== 'paymentAccepted' && currentPage !== 'paymentAccepted2' && currentPage !== 'settings'"><u>CANCEL</u></button> 
+             <button float-left class="cancel" (click)="cancelCheckout()" ion-button clear color="light" *ngIf="currentPage !== 'incidentalProcess' && currentPage !== 'paymentProcess' && currentPage !== 'checkinOption' && currentPage !== 'confirmNumber' && currentPage !== 'verification' && currentPage !== 'passport' && currentPage !== 'scanComplete' && currentPage !== 'dtcm2' && currentPage !== 'signature' && currentPage !== 'incidentalAccount' && currentPage !== 'incidental' && currentPage !== 'signature2' && currentPage !== 'paymentAccepted' && currentPage !== 'paymentAccepted2' && currentPage !== 'settings'">CANCEL</button> 
 
-             <button float-left (click)="cancelCheckin()" ion-button clear color="light" *ngIf="currentPage !== 'incidentalProcess' && currentPage !== 'paymentProcess' && currentPage !== 'roomInfo' && currentPage !== 'cardAccount' && currentPage !== 'cardDetails' && currentPage !== 'checkoutSignature' && currentPage !== 'paymentAccepted2' && currentPage !== 'paymentAccepted' && currentPage !== 'incidentalAccount' && currentPage !== 'settings'"><u>CANCEL</u></button>
+             <button float-left class="cancel" (click)="cancelCheckin()" ion-button clear color="light" *ngIf="currentPage !== 'incidentalProcess' && currentPage !== 'paymentProcess' && currentPage !== 'roomInfo' && currentPage !== 'cardAccount' && currentPage !== 'cardDetails' && currentPage !== 'checkoutSignature' && currentPage !== 'paymentAccepted2' && currentPage !== 'paymentAccepted' && currentPage !== 'incidentalAccount' && currentPage !== 'settings'">CANCEL</button>
 
 
             </ion-col>
@@ -779,7 +776,11 @@ position: fixed;">
             </ion-col>
 
           </ion-row> <!-- powered by metasphere logo -->
-          <div *ngIf="currentPage !=='settings'">
+         
+        </div>
+      </ion-col>
+    </ion-row>
+     <div>
           <ion-row *ngIf="currentPage !== 'terms' && currentPage !== 'userDetails' && currentPage !== 'folio' && currentPage !== 'home' "> <!-- default size -->
               <img class="small-logo" src="assets/imgs/AccorHotel/metasphere.png" alt="metasphere"> 
           </ion-row>
@@ -793,9 +794,6 @@ position: fixed;">
               <img class="low-lowest-logo" src="assets/imgs/AccorHotel/metasphere.png" alt="metasphere"> <!-- lowest logo position for user details -->
           </ion-row>
       	  </div>
-        </div>
-      </ion-col>
-    </ion-row>
 
   </ion-grid>
 </ion-content>
