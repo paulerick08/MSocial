@@ -18,12 +18,13 @@ position: fixed;">
 <ion-content class="bg-image" [ngStyle]="{'background-image': 'url('+bgImage+')'}" >
   <ion-grid no-padding>
     <ion-row class="custom" text-center>
-      <ion-col class="custom"> <!-- Left side of the app -->
+      <ion-col class="custom" *ngIf="!(currentPage === 'terms' || currentPage ==='userDetails' || currentPage ==='dtcm' || currentPage ==='dtcm2' || currentPage ==='signature' || currentPage ==='incidentalAccount' || currentPage ==='incidental' || currentPage ==='signature2' || currentPage ==='incidentalProcess' || currentPage ==='paymentAccepted' || currentPage === 'checkInSuccess') && 
+      !( currentPage === 'folio' || currentPage === 'cardAccount' || currentPage === 'cardDetails' || currentPage === 'checkoutSignature' || currentPage === 'paymentProcess' || currentPage === 'paymentAccepted2' || currentPage === 'checkOutSuccess')"> <!-- Left side of the app -->
         <ion-row>
-          <img *ngIf="currentPage !== 'terms' && currentPage !== 'userDetails' && currentPage !== 'folio' " class="logo" src="assets/imgs/AccorHotel/logo.png"
+          <img *ngIf="currentPage !== 'terms' && currentPage !== 'userDetails' " class="logo" src="assets/imgs/AccorHotel/logo.png"
             alt="" align="center">
           <!-- default logo size -->
-          <img *ngIf="currentPage === 'terms' || currentPage === 'userDetails' || currentPage === 'folio' " class="smallest-logo" src="assets/imgs/AccorHotel/logo.png"
+          <img *ngIf="currentPage === 'terms' || currentPage === 'userDetails' " class="smallest-logo" src="assets/imgs/AccorHotel/logo.png"
             alt="" align="center">
           <!-- smaller logo for center pages -->
         </ion-row>
@@ -61,11 +62,15 @@ position: fixed;">
           </div> end of passport instruction -->
 
       </ion-col>
-        <hr class="hrr">
+        <hr class="hrr" *ngIf="!(currentPage === 'terms' || currentPage ==='userDetails' || currentPage ==='dtcm' || currentPage ==='dtcm2' || currentPage
+        ==='signature' || currentPage ==='incidentalAccount' || currentPage ==='incidental' || currentPage ==='signature2' || currentPage
+        ==='incidentalProcess' || currentPage ==='paymentAccepted' || currentPage === 'checkInSuccess') && !( currentPage === 'folio'
+        || currentPage === 'cardAccount' || currentPage === 'cardDetails' || currentPage === 'checkoutSignature' || currentPage ===
+        'paymentProcess' || currentPage === 'paymentAccepted2' || currentPage === 'checkOutSuccess')">
       <ion-col class=""> <!-- right side of the app -->
         <div class="gray-box-content">
          
-          <div class="content-container"> 
+          <div class="content-container mainBtns"> 
              
             <div *ngIf="currentPage === 'home'" class="buttons"> <!-- home content -->
               <ion-row text-center>
@@ -137,8 +142,8 @@ position: fixed;">
                         </div>
                       </ion-col>
                       <ion-col>
-                         <div (click)="next()" style="font-size: 15px; padding: 0.8vw" class="animate-grow option options">
-                              <ion-icon ios="ios-arrow-forward" md="md-arrow-forward" class="iconics"></ion-icon> <span style="margin-left: 10px;">CONFIRMATION </span> NUMBER
+                         <div (click)="next()" style="font-size: 14px; padding: 0.8vw" class="animate-grow option options">
+                              <ion-icon ios="ios-arrow-forward" md="md-arrow-forward" class="iconics" style="margin-right: 5px;"></ion-icon> <span style="margin-left: 10px;">CONFIRMATION </span>NUMBER
                          </div>
                         </ion-col>
                     </ion-row>
@@ -149,8 +154,8 @@ position: fixed;">
                          </div>
                         </ion-col>
                         <ion-col >
-                        <div style="font-size: 15px; padding: 0.5vw" class="animate-grow  option options">
-                              <ion-icon ios="ios-person" md="md-person"></ion-icon> <span style="margin-left: 20px;">LOGIN </span>MSOCIAL ACCOUNT
+                        <div style="font-size: 13px; padding: 0.5vw" class="animate-grow  option options">
+                              <ion-icon ios="ios-person" md="md-person"></ion-icon> <span style="margin-left: 15px;">LOGIN </span>MSOCIAL ACCOUNT
                         </div>
                         </ion-col>
                       </ion-row>
@@ -177,7 +182,7 @@ position: fixed;">
 
 
           
-            <div text-center *ngIf="currentPage === 'verification'" class="verification"> <!-- verification content -->
+            <div text-center *ngIf="currentPage === 'verification'" class="verification verify"> <!-- verification content -->
               <h4 class="cck">Verify Your Reservation​</h4>
               <hr margin-bottom>
 
@@ -233,9 +238,9 @@ position: fixed;">
               </div>
           </div>
 
-              <div *ngIf="currentPage === 'userDetails'" class="userDetails"> <!-- passport details display -->
+              <div *ngIf="currentPage === 'userDetails'" class="userDetails regCard rC"> <!-- passport details display -->
                 <h4 text-center class="cck">Registration Card</h4>
-                <ion-row margin-bottom class="container" text-left>
+                <ion-row margin-bottom class="container " text-left>
                   <ion-col col-3>
                     <p no-margin>First Name: <span margin-left></span></p>
                     <p no-margin>Last Name: <span margin-left></span></p>
@@ -362,7 +367,7 @@ position: fixed;">
               
               </div>
 
-               <div *ngIf="currentPage === 'terms'" class="userDetails"> <!-- terms and conditions content -->
+               <div *ngIf="currentPage === 'terms'" class="userDetails tC"> <!-- terms and conditions content -->
                 <h4 text-center class="cck">Terms and Condition</h4>
                 <ion-row margin-bottom class="term-container" padding text-left>
                   <h5>I understand that my condition on the registration card is authorization for use of the credit card on file for payment of my account for this and future stays. I agree that my liability for this bill is not waived, and agree to be held personally liable in the event that the indicated person, company, or other third party billed, fail to pay part of all of these charges.</h5>
@@ -373,7 +378,7 @@ position: fixed;">
                 <ion-row margin-vertical style="opacity:0.9">
                 <ion-col no-padding>
                   <ion-item>
-                    <ion-label>I have read and accepted the Terms & Conditions of my accommodation.​</ion-label>
+                    <ion-label style="color:#c3c8cd;">I have read and accepted the Terms & Conditions of my accommodation.​</ion-label>
                     <ion-checkbox [(ngModel)]="isTermCheked" color="dark" ></ion-checkbox>
                   </ion-item>
                 </ion-col>
@@ -391,7 +396,7 @@ position: fixed;">
                       </div>
                   </ion-col>
                   <ion-col>
-                    <h4 class="cck">Folio</h4>
+                    <h4 class="cckFol">Folio</h4>
                     <p no-margin>Room No: <span margin-left>{{folioDetails?.roomNumber}}</span></p>
                     <p no-margin>Membership No: <span margin-left></span></p>
                     <p no-margin>A/R Number: <span margin-left></span></p>
@@ -465,17 +470,28 @@ position: fixed;">
 
                   </ion-col>
                 </ion-row>
-                <ion-row>
-                    <ion-col> <button float-left class="cancel spaceUp" (click)="cancelCheckout()" ion-button clear color="light">CANCEL</button> </ion-col>
+                <ion-row *ngIf="currentPage != 'verification'">
+                    <ion-col *ngIf="currentPage === 'folio'"> <button float-left class="cancel folioCancel" (click)="cancelCheckout()" ion-button clear color="light">CANCEL</button> </ion-col>
+                    <ion-col *ngIf="currentPage !== 'folio'"><button float-left class="cancel " (click)="cancelCheckout()" ion-button clear color="light">CANCEL</button>
+                    </ion-col>
                     <ion-col>
-                      <button (click)="back()" ion-button color="grey" class="transparent spaceUp">BACK</button>
+                      <button (click)="back()" ion-button color="grey" class="transparent ">BACK</button>
                       <button (click)="next()" ion-button color="grey" class="transparent ">NEXT</button>
                     </ion-col>
                 </ion-row>
+                <ion-row *ngIf="currentPage === 'verification'">
+                  <ion-col>
+                    <button float-left class="cancel spaceUp cancels" (click)="cancelCheckout()" ion-button clear color="light">CANCEL</button>
+                  </ion-col>
+                  <ion-col>
+                    <button (click)="back()" ion-button color="grey" class="transparent spaceUps">BACK</button>
+                    <button (click)="next()" ion-button color="grey" class="transparent spaceUps">NEXT</button>
+                  </ion-col>
+                </ion-row>
               </div>
             
-          <div text-center *ngIf="currentPage === 'dtcm'" class="dtcm"> <!-- upload DTCM verification content -->
-              <h4 class="cck">DTCM Verification</h4>
+          <div text-center *ngIf="currentPage === 'dtcm'" class="dtcm tC"> <!-- upload DTCM verification content -->
+              <h4 class="cckN">DTCM Verification</h4>
               <hr margin-bottom>
 
               <div class="container">
@@ -483,8 +499,8 @@ position: fixed;">
                 <p style="color:black;margin-top: 30px"><em class="bold">Please Wait…​</em></p>
               </div>
           </div> 
-          <div text-center *ngIf="currentPage === 'dtcm2'" class="dtcm"> <!-- DTCM verification successful content -->
-              <h4 class="cck">DTCM Verification</h4>
+          <div text-center *ngIf="currentPage === 'dtcm2'" class="dtcm tC"> <!-- DTCM verification successful content -->
+              <h4 class="cckN">DTCM Verification</h4>
               <hr margin-bottom>
                 
               <div class="container">
@@ -492,8 +508,8 @@ position: fixed;">
                   <img src="assets/imgs/AccorHotel/cloud.png" alt="">
                 </div>
           </div>
-          <div text-center [hidden]="currentPage !== 'signature' && currentPage !== 'signature2' && currentPage !== 'checkoutSignature'" class="signature"> <!-- signature input content -->
-              <h4 class="cck">Signature</h4>
+          <div text-center [hidden]="currentPage !== 'signature' && currentPage !== 'signature2' && currentPage !== 'checkoutSignature'" class="signature tC"> <!-- signature input content -->
+              <h4 class="cckN">Signature</h4>
               <hr margin-bottom>
 
               <div text-left class="container">
@@ -503,16 +519,16 @@ position: fixed;">
                 <signature-pad [options]="signaturePadOptions" (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad>
               </div>
           </div>
-          <div text-center *ngIf="currentPage === 'paymentAccepted'" class="checkInSuccess"> <!-- payment success content -->
-              <h4 class="cck">Incidental Payment</h4>
+          <div text-center *ngIf="currentPage === 'paymentAccepted'" class="checkInSuccess tC"> <!-- payment success content -->
+              <h4 class="cckN">Incidental Payment</h4>
               <hr margin-bottom>
 
               <div class="container">
                 <p style="color:#c3c8cd;margin-top:75px"><i>Payment Accepted!</i></p>
               </div>
           </div>
-          <div text-center *ngIf="currentPage === 'checkInSuccess'" class="checkInSuccess"> <!-- check in success content -->
-              <h4 class="cck">Check-in Successful!</h4>
+          <div text-center *ngIf="currentPage === 'checkInSuccess'" class="checkInSuccess tC"> <!-- check in success content -->
+              <h4 class="cckN">Check-in Successful!</h4>
               <hr margin-bottom>
 
               <div class="container">
@@ -534,7 +550,7 @@ position: fixed;">
               </div>
           </div>
           <div text-center *ngIf="currentPage === 'cardAccount'" class="checkOutSuccess"> <!-- input card details content -->
-              <h4 class="cck">Payment</h4>
+              <h4 class="cckN">Payment</h4>
               <hr margin-bottom>
 
               <ion-row text-center>
@@ -577,7 +593,7 @@ position: fixed;">
 
 
           <div text-center *ngIf="currentPage === 'cardDetails'" class="checkOutSuccess"> <!-- input card details content -->
-              <h4 class="cck">Payment</h4>
+              <h4 class="cckN">Payment</h4>
               <hr margin-bottom>
 
               <div *ngIf="card == 'amex'" class="container">
@@ -635,38 +651,38 @@ position: fixed;">
           </div>
 
           <div text-center *ngIf="currentPage === 'incidentalAccount'" class="checkOutSuccess"> <!-- input card details content -->
-              <h4 class="cck">Payment</h4>
+              <h4 class="cckN">Payment</h4>
               <hr margin-bottom>
 
               <ion-row text-center>
                     <ion-col>
-                      <button block (click)="showAmex()">
+                      <button block (click)="showAmex()" class="btnchecout">
                           <img src="assets/imgs/AccorHotel/amex.png" style="width : 50% ; height : 50%" >
                       </button>
                     </ion-col>
                     <ion-col >
-                       <button block (click)="showVisa()">
+                       <button block (click)="showVisa()" class="btnchecout">
                           <img src="assets/imgs/AccorHotel/visa.png" style="width : 50% ; height : 50%">
                       </button>
                       </ion-col>
                   
                   
                       <ion-col>
-                         <button block (click)="showMaster()">
+                         <button block (click)="showMaster()" class="btnchecout">
                           <img src="assets/imgs/AccorHotel/master.png" style="width : 50% ; height : 50%">
                       </button>
                       </ion-col>
                </ion-row>
-               <ion-row text-center (click)="showJCB()">
+               <ion-row text-center (click)="showJCB()" >
                       <ion-col>
-                          <button block>
+                          <button block class="btnchecout">
                           <img src="assets/imgs/AccorHotel/jcb.png" style="width : 50% ; height : 50%">
                       </button>
                         </ion-col>
                     
                    
                         <ion-col >
-                          <button block (click)="showDiners()">
+                          <button block (click)="showDiners()" class="btnchecout">
                           <img src="assets/imgs/AccorHotel/diners.png" style="width : 50% ; height : 50%">
                       </button>
                         </ion-col>
@@ -677,7 +693,7 @@ position: fixed;">
           </div>
 
           <div text-center *ngIf="currentPage === 'incidental'" class="checkOutSuccess"> <!-- input card details for incidental content -->
-              <h4 class="cck">Incidental Payment</h4>
+              <h4 class="cckN">Incidental Payment</h4>
               <hr margin-bottom>
 
               <div *ngIf="card == 'amex'" class="container">
@@ -734,7 +750,7 @@ position: fixed;">
                </div>
           </div>
           <div text-center *ngIf="currentPage === 'incidentalProcess'" class="checkOutSuccess"> <!-- incidental payment processing content -->
-              <h4 class="cck">Incidental Payment</h4>
+              <h4 class="cckN">Incidental Payment</h4>
               <hr margin-bottom>
 
               <div class="container">
@@ -743,7 +759,7 @@ position: fixed;">
                </div>
           </div>
           <div text-center *ngIf="currentPage === 'paymentProcess'" class="checkOutSuccess"> <!-- homepayment processing content -->
-              <h4>Payment</h4>
+              <h4 class="cckN">Payment</h4>
               <hr margin-bottom>
 
               <div class="container">
@@ -753,15 +769,15 @@ position: fixed;">
           </div>
            
           <div text-center *ngIf="currentPage === 'paymentAccepted2'" class="checkOutSuccess"> <!-- payment accepted content -->
-              <h4>Payment</h4>
+              <h4 class="cckN">Payment</h4>
               <hr margin-bottom>
 
               <div class="container">
-                <p style="color:black;margin-top:65px;"><i>Payment Accepted!</i></p>
+                <p style="color:black;margin-top:65px;" class="paymentAccepted"><i>Payment Accepted!</i></p>
               </div>
           </div>
           <div text-center *ngIf="currentPage === 'checkOutSuccess'" class="checkOutSuccess"> <!-- checkout success content -->
-              <h4>Check-out Successful!</h4>
+              <h4 class="cckN">Check-out Successful!</h4>
               <hr margin-bottom>
 
               <div class="container">

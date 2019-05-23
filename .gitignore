@@ -35,18 +35,6 @@ $RECYCLE.BIN/
 Thumbs.db
 UserInterfaceState.xcuserstate
 
-# resources/android/icon/
-
-# resources/android/splash/
-
-# resources/
-
-*.ico
-
-*.jpg
-
-*.png
-
 
 plugins/
 
