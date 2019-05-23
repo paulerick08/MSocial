@@ -66,7 +66,7 @@ export class HomePage {
   config='';
   config2='';
   config3='';
-  bgImage='../assets/imgs/AccorHotel/background1.png';
+  bgImage ='../assets/imgs/AccorHotel/13152495.jpg';
   newpath='';
   
   pages = {

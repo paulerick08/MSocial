@@ -20,11 +20,11 @@ box-shadow: none !important;
             padding: 20px;;
         }
         .col.custom{
-            padding: 50px 20px 0 20px !important;
+            padding: 100px 20px 0 20px !important;
 
-            color: #1f4e79;
+            // color: #1f4e79;
             text-align: left;
-            height: 100%;
+            height: 50%;
             hr.header{
                 color: #1f4e79;
                 background-color: #1f4e79;
@@ -32,11 +32,13 @@ box-shadow: none !important;
             }
             h1.header {
                 display: inline;
-                font-size: 2.5rem;
-
+                font-size: 2rem;
+                border-bottom: 1px solid black;
             }
             h5 {
                 font-size: 1.5rem;
+                margin-top: 8px;
+                margin-left: -65px;
             }
             img.header{
                 position: relative;
@@ -45,6 +47,7 @@ box-shadow: none !important;
             }
             .content-container {
                 padding: 5px 20px 50px 20px;
+                margin-top: 100px;
                 height: 340px;
                 hr{
                     color:black;
@@ -98,7 +101,7 @@ box-shadow: none !important;
             width: auto;
             margin: auto;
             display: block;
-            margin-top:115px;
+            margin-top:20px;
             margin-left:0px;
         }
 
@@ -107,7 +110,7 @@ box-shadow: none !important;
             width: auto;
             margin: auto;
             display: block;
-            margin-top:75px;
+            margin-top:20px;
             margin-left:0px;
         }
 
@@ -116,7 +119,7 @@ box-shadow: none !important;
             width: auto;
             margin: auto;
             display: block;
-            margin-top:175px;
+            margin-top:20px;
             margin-left:0px;
         }
 
@@ -138,7 +141,7 @@ box-shadow: none !important;
         .gray-box-content{
             color: #000000;
             text-align: right;
-            height: 100%;
+            height: 50%;
             hr.header{
                 color: #000000;
                 background-color: #ffffff;
@@ -158,6 +161,7 @@ box-shadow: none !important;
                 height: 55px;
             }
             .content-container {
+                margin-top: 150px;
                 padding: 5px 20px 50px 20px;
                 height: 340px;
                 hr{
@@ -177,6 +181,10 @@ box-shadow: none !important;
                     width: 140px;
                     font-size: 2.5rem;
                     color:black;
+                }
+                ion-icon {
+                    position: absolute;
+                    left: 10px;
                 }
             }
             .confirmNumber{
@@ -209,11 +217,32 @@ box-shadow: none !important;
                 .container {
                     color: rgba(0, 0, 0, 0.7);
                     background-color: rgba(255, 255, 255, 0.69);
+                    border-radius: 5px;
                     p {
                         font-size: 16px;
                         color:rgba(0, 0, 0, 0.7);
                         margin: .3em 0;
                         // margin: 0;
+                    }
+                    .detailsD {
+                        padding-left: 15px;
+                        p {
+                            font-weight: 650;
+                            font-family: Arial, Helvetica, sans-serif;
+                            text-align: left !important;
+                        }
+                        p::before {
+                            content: "> "
+                        }
+                        
+                    }
+                    .detailsData { 
+                        padding-left: 20px;
+                        p {
+                            font-weight: 650;
+                            font-family: Arial, Helvetica, sans-serif;
+                         text-align: right !important;
+                        }
                     }
                 }
             }
@@ -288,6 +317,11 @@ box-shadow: none !important;
         }
         .label-md {
             font-size: 13px;
+        }
+    }
+    .roomInfo {
+        ion-input::before {
+            
         }
     }
     .folio {
@@ -428,6 +462,10 @@ box-shadow: none !important;
     //     padding: 0 1em;
     //     width: 100%;
     //     }
+    ion-icon {
+        position: absolute;
+                    left: 10px;
+    }
     }
 
     hr{
@@ -472,15 +510,18 @@ box-shadow: none !important;
     }
 
     .transparent{
-    background-color:rgba(157, 192, 224,0.8) !important;
-    color:black;
+    background-color:#00354dcb !important;
+    color: #c3c8cd !important;
     font-size:1.5em;
+    border-radius:  10px 0px  10px 0px;
   }
 
   .cancel{
-    background-color:rgba(157, 192, 224,0.8) !important;
-    color:black;
+    background-color:#57527ed5 !important;
+    color:#c3c8cd;
     font-size:1.5em;
+    margin-top: 50px;
+    border-radius:   0px 10px 0px 10px ;
   }
 
   .user{
@@ -489,7 +530,9 @@ box-shadow: none !important;
   }
 
   .item-md {
-    background-color: rgba(255,255,255,0.8);
+    color: #00344d;
+    background: none;
+    border-bottom: 2px solid #00344d !important;
 }
 
     .grey::-moz-placeholder{
@@ -503,5 +546,48 @@ box-shadow: none !important;
     .grey::-webbkit-input-placeholder{
         color:black;
     }
-
+    .times {
+        margin: 0 auto;
+        margin-top: -50px;
+        margin-right: -10px;
+        align-items: center;
+    }
+    .hrr {
+        border: none;
+        border-left: 4px solid #00354d7e;
+        border-radius: 5px;
+        height: 380px;
+        margin-top: 140px;
+        width: 1px;
+    }
+    .cck {
+        color: #e0e5e9;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 2.5rem;
+        font-weight: bold;
+    }
+    .options {
+        color: white !important;
+        font-weight: bold;
+        font-family: Helvetica !important;
+        background: #868f98c0 !important;
+        border-radius: 5px;
+    }
+    .cck-container {
+        border-radius: 20px !important;
+    }
+    .spaceUp {
+        margin-top: 150px;
+    }
+    .iconics {
+        align-items: left;
+    }
+    .detailsD .detailsData {
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 200;
+    }
+$darl: #868f98;
+$O: #c3c8cd;
+$G: #00344d;
+$I: #57527e;
 }
