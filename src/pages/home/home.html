@@ -142,8 +142,8 @@ position: fixed;">
                         </div>
                       </ion-col>
                       <ion-col>
-                         <div (click)="next()" style="font-size: 14px; padding: 0.8vw" class="animate-grow option options">
-                              <ion-icon ios="ios-arrow-forward" md="md-arrow-forward" class="iconics" style="margin-right: 5px;"></ion-icon> <span style="margin-left: 10px;">CONFIRMATION </span>NUMBER
+                         <div (click)="next()" style="font-size: 14px; padding: 0.8vw" class="animate-grow option options confirm" >
+                              <ion-icon ios="ios-arrow-forward" md="md-arrow-forward" class="iconics" style="margin-right: 5px;"></ion-icon> <span style="margin-left: 10px;" class="confirmNumber">CONFIRMATION </span>NUMBER
                          </div>
                         </ion-col>
                     </ion-row>
@@ -234,7 +234,7 @@ position: fixed;">
               <hr margin-bottom>
 
               <div class="container">
-                <p style="color:#c3c8cd;margin-top:65px; font-weight: 2rem"><i>Scanning complete!</i></p>
+                <p style="color:black;margin-top:65px; font-weight: 2rem"><i>Scanning complete!</i></p>
               </div>
           </div>
 
@@ -524,7 +524,7 @@ position: fixed;">
               <hr margin-bottom>
 
               <div class="container">
-                <p style="color:#c3c8cd;margin-top:75px"><i>Payment Accepted!</i></p>
+                <p style="color:black;margin-top:75px"><i>Payment Accepted!</i></p>
               </div>
           </div>
           <div text-center *ngIf="currentPage === 'checkInSuccess'" class="checkInSuccess tC"> <!-- check in success content -->
@@ -532,7 +532,7 @@ position: fixed;">
               <hr margin-bottom>
 
               <div class="container">
-              	<p style="color:#c3c8cd;margin-top: 30px">Room 111 checked-in successfully!</p>
+              	<p style="color:black;margin-top: 30px">Room 111 checked-in successfully!</p>
                 <p style="margin-top: 20px;color:black">Please get your room key card at the front desk.</p>
               </div>
           </div>
@@ -806,7 +806,7 @@ position: fixed;">
 
             </ion-col>
 
-            <ion-col col-8 style="margin-top: 50px;">
+            <ion-col col-8 style="margin-top: 50px;" class="col-E">
               <button class="transparent" (click)="back()" *ngIf="currentPage !== 'incidentalProcess' && currentPage !== 'paymentProcess' && currentPage !== 'settings'" ion-button>BACK</button>
               <button class="transparent" (click)="next()" *ngIf="currentPage !== 'incidentalProcess' && currentPage !== 'paymentProcess' && currentPage !== 'signature' && currentPage !== 'checkinOption' && currentPage !== 'passport' && currentPage !== 'cardAccount' && currentPage !== 'incidentalAccount' && currentPage !== 'settings' " ion-button >NEXT</button>
               <button  class="transparent" (click)="next()" *ngIf="currentPage === 'signature' || currentPage === 'userDetails'" ion-button>Next</button>
