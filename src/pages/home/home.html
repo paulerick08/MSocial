@@ -94,7 +94,7 @@ position: fixed;">
                 </ion-col>
               </ion-row>
             </div>
-            <div *ngIf="currentPage === 'settings'" class="buttons"> <!-- verification content -->
+            <div *ngIf="currentPage === 'settings'" class="buttons config"> <!-- verification content -->
               <h4 text-center class="cck">Configuration</h4>
               <hr margin-bottom>
               <p text-center style="color:#c3c8cd">Please browse for the image file and click the Load Button.</p>
@@ -370,9 +370,15 @@ position: fixed;">
                <div *ngIf="currentPage === 'terms'" class="userDetails tC"> <!-- terms and conditions content -->
                 <h4 text-center class="cck">Terms and Condition</h4>
                 <ion-row margin-bottom class="term-container" padding text-left>
-                  <h5>I understand that my condition on the registration card is authorization for use of the credit card on file for payment of my account for this and future stays. I agree that my liability for this bill is not waived, and agree to be held personally liable in the event that the indicated person, company, or other third party billed, fail to pay part of all of these charges.</h5>
+                  <div class="overflows">
+                    <h5>I understand that my condition on the registration card is authorization for use of the credit card on file for payment of
+                      my account for this and future stays. I agree that my liability for this bill is not waived, and agree to be held personally
+                      liable in the event that the indicated person, company, or other third party billed, fail to pay part of all of these charges.</h5>
 
-                  <h5 style="margin-top:30px;">I understand that hotel management is not responsible for money, jewels, or other valuables that have been misplaced, stolen, or left in guestrooms, meeting rooms, public areas, family and/or hotel vehicles. We are recommended deposition of valuable items at reception.</h5>
+                    <h5 style="margin-top:30px;">I understand that hotel management is not responsible for money, jewels, or other valuables that have been misplaced, stolen,
+                      or left in guestrooms, meeting rooms, public areas, family and/or hotel vehicles. We are recommended deposition of valuable
+                      items at reception.</h5>
+                  </div>
                 </ion-row>
 
                 <ion-row margin-vertical style="opacity:0.9">
@@ -503,8 +509,8 @@ position: fixed;">
               <h4 class="cckN">DTCM Verification</h4>
               <hr margin-bottom>
                 
-              <div class="container">
-                  <p style="color:black;margin-top:40px">UPLOAD AND VERIFICATION SUCCESSFUL!​ ​​</p> 
+              <div class="container uploads">
+                  <p style="color:black;margin-top:40px uploadsText">UPLOAD AND VERIFICATION SUCCESSFUL!​ ​​</p> 
                   <img src="assets/imgs/AccorHotel/cloud.png" alt="">
                 </div>
           </div>
@@ -555,33 +561,33 @@ position: fixed;">
 
               <ion-row text-center>
                     <ion-col>
-                      <button block (click)="showAmex()">
+                      <button block (click)="showAmex()" class="btnchecout">
                           <img src="assets/imgs/AccorHotel/amex.png" style="width : 50% ; height : 50%" >
                       </button>
                     </ion-col>
                     <ion-col >
-                       <button block (click)="showVisa()">
+                       <button block (click)="showVisa()" class="btnchecout">
                           <img src="assets/imgs/AccorHotel/visa.png" style="width : 50% ; height : 50%">
                       </button>
                       </ion-col>
                   
                   
                       <ion-col>
-                         <button block (click)="showMaster()">
+                         <button block (click)="showMaster()" class="btnchecout">
                           <img src="assets/imgs/AccorHotel/master.png" style="width : 50% ; height : 50%">
                       </button>
                       </ion-col>
                </ion-row>
                <ion-row text-center (click)="showJCB()">
                       <ion-col>
-                          <button block>
+                          <button block class="btnchecout">
                           <img src="assets/imgs/AccorHotel/jcb.png" style="width : 50% ; height : 50%">
                       </button>
                         </ion-col>
                     
                    
                         <ion-col >
-                          <button block (click)="showDiners()">
+                          <button block (click)="showDiners()" class="btnchecout">
                           <img src="assets/imgs/AccorHotel/diners.png" style="width : 50% ; height : 50%">
                       </button>
                         </ion-col>
@@ -596,7 +602,7 @@ position: fixed;">
               <h4 class="cckN">Payment</h4>
               <hr margin-bottom>
 
-              <div *ngIf="card == 'amex'" class="container">
+              <div *ngIf="card == 'amex'" class="container checkouts">
                 <p style="color:black"><i>Please note that your pre-authorization upon check-in will be confirmed.</i></p>
                 <p align="center" style="margin-top:15px;color:black">Total Amount: $550.00</p>
                  <p style="margin-top:30px;text-decoration: underline;color:black"><i>Please enter card details.</i></p>
@@ -606,7 +612,7 @@ position: fixed;">
                  <input class="ccv" [(ngModel)]="amexValue4" type="tel" maxlength="4" placeholder="CVV" (keyup)="onAmexEnterCode4($event)">
                </div>
 
-              <div *ngIf="card == 'visa'" class="container">
+              <div *ngIf="card == 'visa'" class="container checkouts">
                 <p style="color:black"><i>Please note that your pre-authorization upon check-in will be confirmed.</i></p>
                 <p align="center" style="margin-top:15px;color:black">Total Amount: $550.00</p>
                  <p style="margin-top:30px;text-decoration: underline;color:black"><i>Please enter card details.</i></p>
@@ -617,7 +623,7 @@ position: fixed;">
                  <input class="ccv" [(ngModel)]="checkOutValue5" type="tel" maxlength="3" placeholder="CVV" (keyup)="onEnterCode($event)">
                </div>
 
-              <div *ngIf="card == 'master'" class="container">
+              <div *ngIf="card == 'master'" class="container checkouts">
                 <p style="color:black"><i>Please note that your pre-authorization upon check-in will be confirmed.</i></p>
                 <p align="center" style="margin-top:15px;color:black">Total Amount: $550.00</p>
                  <p style="margin-top:30px;text-decoration: underline;color:black"><i>Please enter card details.</i></p>
@@ -628,7 +634,7 @@ position: fixed;">
                  <input class="ccv" [(ngModel)]="checkOutValue5" type="tel" maxlength="3" placeholder="CVV" (keyup)="onEnterCode($event)">
                </div>
 
-                <div *ngIf="card == 'jcb'" class="container">
+                <div *ngIf="card == 'jcb'" class="container checkouts">
                 <p style="color:black"><i>Please note that your pre-authorization upon check-in will be confirmed.</i></p>
                 <p align="center" style="margin-top:15px;color:black">Total Amount: $550.00</p>
                  <p style="margin-top:30px;text-decoration: underline;color:black"><i>Please enter card details.</i></p>
@@ -639,7 +645,7 @@ position: fixed;">
                  <input class="ccv" [(ngModel)]="checkOutValue5" type="tel" maxlength="3" placeholder="CVV" (keyup)="onEnterCode($event)">
                </div>
 
-                <div *ngIf="card == 'diners'" class="container">
+                <div *ngIf="card == 'diners'" class="container checkouts">
                 <p style="color:black"><i>Please note that your pre-authorization upon check-in will be confirmed.</i></p>
                 <p align="center" style="margin-top:15px;color:black">Total Amount: $550.00</p>
                  <p style="margin-top:30px;text-decoration: underline;color:black"><i>Please enter card details.</i></p>
@@ -790,7 +796,7 @@ position: fixed;">
 
           </div>
           <ion-row text-center margin-bottom *ngIf="currentPage == 'checkInSuccess' || currentPage == 'checkOutSuccess'">
-              <ion-col> <button  (click)="quit()" ion-button  class="transparent">EXIT</button> </ion-col>
+              <ion-col> <button  (click)="quit()" ion-button  class="transparent exits">EXIT</button> </ion-col>
             </ion-row> <!-- button rows content -->
 
              

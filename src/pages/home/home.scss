@@ -303,9 +303,9 @@ box-shadow: none !important;
           }
           height: auto;
           top: 180px;
-    left: -98%;
-    right: 0;
-    width: 669px;
+        left: -98%;
+        right: 0;
+        width: 669px;
         background-color: rgba(0, 0, 0, 0.28);
         padding: 25px;
         display: block;
@@ -340,7 +340,7 @@ box-shadow: none !important;
         height: auto;
         color:black;
         width: 100%;
-        top: 180px;
+        top: 120px !important;
         left: 0;
         right: 0;
         width: 75%;
@@ -351,6 +351,8 @@ box-shadow: none !important;
         margin-top: -100px;
         font-family: Helvetica;
         border-radius: 30px 5px 30px 5px;
+        height: 90% !important;
+        overflow: scroll;
         .cckFol {
             color: #00344d;
             border-bottom: 3px solid #00354db4;
@@ -370,7 +372,7 @@ box-shadow: none !important;
         }
         p {
             margin: 0;
-            font-size: 12px;
+            font-size: 11px !important;
            
         }
         .table {
@@ -613,7 +615,9 @@ box-shadow: none !important;
     .regCard {
         margin-top: -90px !important;
     }
-    .btnchecout {  background-color: #57527ece !important; }
+    .btnchecout {  
+        background-color: #868f98ce !important; 
+    }
     .paymentAccepted { font-size: 2rem; color: #00344d; }
     .cancels .spaceUps  { margin-top: 150px !important; }
     .tC { margin-top: -50px !important; }
@@ -929,15 +933,16 @@ box-shadow: none !important;
         option[value=""][disabled] {
             display: none;
           }
-          height: auto;
-          top: 180px;
-    left: -98%;
-    right: 0;
-    width: 669px;
+          
+          top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            width: 90% !important;
         background-color: rgba(0, 0, 0, 0.28);
         padding: 25px;
         display: block;
         margin: auto;
+        overflow: scroll;
         .row.container {
             padding: 3px;
             background-color: rgba(255,255,255,0.7);
@@ -1047,6 +1052,8 @@ box-shadow: none !important;
             padding: 10px 3px 0 3px;
             color: #000000c2;
             background-color: rgba(255, 255, 255, 0.69);
+            width: 80%;
+            margin: auto;
             p {
                 font-size: 16px;
                 color:rgba(0, 0, 0, 0.7);
@@ -1055,7 +1062,7 @@ box-shadow: none !important;
             canvas {
                 background-color: #ffffff;
                 width: 100%;
-                height: 169px;
+                height: 20vw;
             }
             .button {
                 background-color: transparent;
@@ -1071,6 +1078,7 @@ box-shadow: none !important;
             color: #000000;
             border: 1px solid white;
             background-color: transparent;
+            overflow: scroll !important;
             h5{
                 font-size: 16px;
                 color:white;
@@ -1250,13 +1258,17 @@ box-shadow: none !important;
         font-weight: 200;
     }
     .regCard {
-        margin-top: -90px !important;
+        margin-top: 50px !important;
+        height: 100% !important;
     }
-    .btnchecout {  background-color: #57527ece !important; }
+    .btnchecout {  
+        background-color: #5e5d61e0 !important; 
+       img { width: 40% !important; height: 40% !important; }
+    }
     .paymentAccepted { font-size: 2rem; color: #00344d; }
     .cancels .spaceUps  { margin-top: 150px !important; }
-    .tC { margin-top: -50px !important; }
-    .rC { margin-top: -140px !important;  }
+    .tC { margin-top: -10px !important; height: 100% !important; }
+    .rC { margin-top: -20px !important; overflow: scroll; }
     .folioCancel { margin-top: 0px !important; }
     .confirmNumber {
         margin-left: 20px !important;
@@ -1266,6 +1278,21 @@ box-shadow: none !important;
     }
     .col-E {
         margin-top: -80px !important;
+    }
+    .overflows {
+        overflow: scroll;
+    }
+    .uploads { height: 65% !important; }
+    .uploadsText { margin-top: 20px !important; }
+    .exits { margin-top: -25vw; }
+    .checkouts { min-height: 80% !important;
+    padding: 2.5px !important; }
+    .config { 
+        overflow: scroll !important;
+        height: 110%;
+        p {
+            font-size: 1.3rem !important;
+        }
     }
 }
 }
