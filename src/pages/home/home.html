@@ -126,36 +126,39 @@ position: fixed;">
                   <ion-row text-center>
                     <ion-col>
                       <div class="animate-grow option options" style="padding:1.2vw">
-                          <ion-icon ios="ios-plane" md="md-plane" class="iconics"></ion-icon> PASSPORT
+                          <span class="divText">
+                          <ion-icon ios="ios-plane" md="md-plane" class="iconics"></ion-icon> PASSPORT</span>
                       </div>
                     </ion-col>
                     <ion-col >
                       <div class="animate-grow option options" style="padding:1.2vw">
-                          <ion-icon ios="ios-qr-scanner" md="md-qr-scanner" class="iconics"></ion-icon> QR CODE
+                          <span class="divText"> <ion-icon ios="ios-qr-scanner" md="md-qr-scanner" class="iconics"></ion-icon> QR CODE</span>
                       </div>
                       </ion-col>
                   </ion-row>
                   <ion-row text-center>
                       <ion-col>
                         <div class="animate-grow option options" style="padding:1.2vw">
-                              <ion-icon ios="ios-card" md="md-card" class="iconics"></ion-icon> ID CARD
+                             <span class="divText"> <ion-icon ios="ios-card" md="md-card" class="iconics"></ion-icon> ID CARD</span>
                         </div>
                       </ion-col>
                       <ion-col>
                          <div (click)="next()" style="font-size: 14px; padding: 0.8vw" class="animate-grow option options confirm" >
-                              <ion-icon ios="ios-arrow-forward" md="md-arrow-forward" class="iconics" style="margin-right: 5px;"></ion-icon> <span style="margin-left: 10px;" class="confirmNumber">CONFIRMATION </span>NUMBER
+                             <span class="divText"> <ion-icon ios="ios-arrow-forward" md="md-arrow-forward" class="iconics" style="margin-right: 5px;"></ion-icon>
+                            <span style="margin-left: 10px;" class="confirmNumber">CONFIRMATION </span>NUMBER</span> 
                          </div>
                         </ion-col>
                     </ion-row>
                     <ion-row text-center>
                         <ion-col >
                          <div class="animate-grow option options" style="padding:1.2vw">
-                              <ion-icon ios="ios-walk" md="md-walk" class="iconics"></ion-icon> WALK-IN
+                              <span class="divText"><ion-icon ios="ios-walk" md="md-walk" class="iconics"></ion-icon> WALK-IN </span>
                          </div>
                         </ion-col>
                         <ion-col >
-                        <div style="font-size: 13px; padding: 0.5vw" class="animate-grow  option options">
-                              <ion-icon ios="ios-person" md="md-person"></ion-icon> <span style="margin-left: 15px;">LOGIN </span>MSOCIAL ACCOUNT
+                        <div style="font-size: 13px; padding: 0.5vw" class="animate-grow  option options special">
+                             <span class="divText"><ion-icon ios="ios-person" md="md-person"></ion-icon>
+                            <span style="margin-left: 15px;">LOGIN </span>MSOCIAL ACCOUNT </span>
                         </div>
                         </ion-col>
                       </ion-row>
@@ -530,7 +533,7 @@ position: fixed;">
               <hr margin-bottom>
 
               <div class="container">
-                <p style="color:black;margin-top:75px"><i>Payment Accepted!</i></p>
+                <p style="color:black;margin-top:50px"><i>Payment Accepted!</i></p>
               </div>
           </div>
           <div text-center *ngIf="currentPage === 'checkInSuccess'" class="checkInSuccess tC"> <!-- check in success content -->
@@ -556,7 +559,7 @@ position: fixed;">
               </div>
           </div>
           <div text-center *ngIf="currentPage === 'cardAccount'" class="checkOutSuccess"> <!-- input card details content -->
-              <h4 class="cckN">Payment</h4>
+              <h4 class="cckN ckeoPayment">Payment</h4>
               <hr margin-bottom>
 
               <ion-row text-center>
@@ -599,7 +602,7 @@ position: fixed;">
 
 
           <div text-center *ngIf="currentPage === 'cardDetails'" class="checkOutSuccess"> <!-- input card details content -->
-              <h4 class="cckN">Payment</h4>
+              <h4 class="cckN ckeoPayment">Payment</h4>
               <hr margin-bottom>
 
               <div *ngIf="card == 'amex'" class="container checkouts">
@@ -779,7 +782,7 @@ position: fixed;">
               <hr margin-bottom>
 
               <div class="container">
-                <p style="color:black;margin-top:65px;" class="paymentAccepted"><i>Payment Accepted!</i></p>
+                <p style="color:black;margin-top:50px;" class="paymentAccepted"><i>Payment Accepted!</i></p>
               </div>
           </div>
           <div text-center *ngIf="currentPage === 'checkOutSuccess'" class="checkOutSuccess"> <!-- checkout success content -->

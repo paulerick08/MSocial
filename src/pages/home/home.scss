@@ -3,7 +3,7 @@ page-home {
     //     padding: 0 30px 0 30px;
     // }
 
-@media (max-width: 768px) {
+@media (max-width: 850px) {
     .item-inner {
 border-bottom-color: transparent !important;
 box-shadow: none !important;
@@ -379,7 +379,7 @@ box-shadow: none !important;
             border-radius: 5px;
             margin-right: 35px;
             img {
-                height: 169px;
+                height: 120px !important;
                 object-fit: cover;
             }
         }
@@ -530,7 +530,7 @@ box-shadow: none !important;
   }
 
   .cancel{
-    background-color:#57527ed5 !important;
+    background-color:rgba(87, 82, 126, 0.925) !important;
     color:#c3c8cd;
     font-size:1.5em;
     margin-top: 50px;
@@ -567,7 +567,7 @@ box-shadow: none !important;
     }
     .hrr {
         border: none;
-        border-left: 4px solid #00354d7e;
+        border-left: 4px solid rgba(0, 53, 77, 0.625);
         border-radius: 5px;
         height: 380px;
         margin-top: 140px;
@@ -609,7 +609,7 @@ box-shadow: none !important;
         margin-top: -90px !important;
     }
     .btnchecout {  
-        background-color: #868f98ce !important; 
+        background-color: rgba(134, 143, 152, 0.925) !important; 
     }
     .paymentAccepted { font-size: 2rem; color: #00344d; }
     .cancels .spaceUps  { margin-top: 150px !important; }
@@ -895,7 +895,7 @@ box-shadow: none !important;
             padding: 2px;
             color: #000000;
             background-color: rgba(255, 255, 255, 0.69);
-            height: 35vw;
+            
             p {
                 font-size: 16px;
                 color:rgb(0, 0, 0);
@@ -906,16 +906,16 @@ box-shadow: none !important;
         margin-top: -7vw;
         height: 282px;
         margin-bottom: 205px;
+            p {
+                font-size: 1.6vw;
+                color:rgba(0, 0, 0, 0.7);
+            }
         .container {
             height: 20vw;
             // padding: 16px;
             width: 100%;
             color: #000000;
             background-color: rgba(255, 255, 255, 0.69);
-            p {
-                font-size: 16px;
-                color:rgba(0, 0, 0, 0.7);
-            }
             img {
                 width: 100%;
                 height: 100%;
@@ -963,9 +963,8 @@ box-shadow: none !important;
     }
     .folio {
         position: fixed;
-        height: auto;
+        height: 85% !important;
         color:black;
-        width: 100%;
         top: 180px;
         left: 0;
         right: 0;
@@ -1030,14 +1029,20 @@ box-shadow: none !important;
     }
     .dtcm, .checkInSuccess, .roomInfo, .checkOutSuccess{
         .container {
-            min-height:150px;
-            padding: 16px;
+           
+            min-height: 150px !important;
+            padding: 8px !important;
             color: #000000;
-            background-color: rgba(255, 255, 255, 0.69);
+            background-color: rgba(255, 255, 255, 0.69);    
+            margin: auto;
             p {
                 font-size: 16px;
                 color:rgba(0, 0, 0, 0.7);
+                
             }
+        }
+        .ckeoPayment {
+            margin-top: -20px;
         }
     }
     .signature{
@@ -1172,11 +1177,11 @@ box-shadow: none !important;
   }
 
   .cancel{
-    background-color:#57527ed5 !important;
+    background-color: rgba(87, 82, 126, 0.925) !important;
     color:#c3c8cd;
     font-size:1.5rem;
-    margin-top: -75px;
-    margin-left: 50px;
+    margin-top: -78px;
+    margin-left: 2vw;
     margin-bottom: 0px;
     border-radius:   0px 10px 0px 10px ;
   }
@@ -1211,7 +1216,7 @@ box-shadow: none !important;
     }
     .hrr {
         border: none;
-        border-left: 4px solid #00354d7e;
+        border-left: 4px solid rgba(0, 53, 77, 0.625);
         border-radius: 5px;
         height: 240px;
         margin-top: 6vw;
@@ -1229,14 +1234,22 @@ box-shadow: none !important;
         font-size: 3rem;
         font-weight: bold;
     }
+    
     .options {
         color: white !important;
         font-weight: bold;
         font-family: Helvetica !important;
         background: rgba(134, 143, 152, 0.925) !important;
         border-radius: 5px;
-        padding: .5vw !important;
+        padding: 2vw !important;
         font-size: 1.9vw !important;
+        text-align: center;
+        .divText {
+            
+        }
+        .confirm {
+            padding: 1vw !important;
+        }
     }
     .cck-container {
         border-radius: 20px !important;
@@ -1263,12 +1276,20 @@ box-shadow: none !important;
     .cancels .spaceUps  { margin-top: 150px !important; }
     .tC { margin-top: -10px !important; height: 100% !important; }
     .rC { margin-top: -20px !important; overflow: scroll; }
-    .folioCancel { margin-top: 0px !important; }
+    .folioCancel { margin-top: 0px !important;
+    margin-left: 0px !important; }
     .confirmNumber {
         margin-left: 20px !important;
     }
+    .special {
+        font-size: 1.6vw !important;
+        padding: 1vw !important;
+        padding-top: 1.5vw !important;
+    }
     .confirm { 
         font-size: 1.6vw !important;
+        padding: 1vw !important;
+        padding-top: 1.5vw !important;
     }
     .col-E {
         margin-top: -80px !important;
@@ -1278,7 +1299,7 @@ box-shadow: none !important;
     }
     .uploads { height: 65% !important; }
     .uploadsText { margin-top: 20px !important; }
-    .exits { margin-top: -25vw; }
+    .exits { margin-top: -25vw;}
     .checkouts { min-height: 80% !important;
     padding: 2.5px !important; }
     .config { 
