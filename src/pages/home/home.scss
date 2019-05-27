@@ -91,13 +91,6 @@ box-shadow: none !important;
             margin-bottom:50px;
         }
 
-        .small-logo {
-            height: 40px;
-            width: auto;
-            margin: auto;
-            display: block;
-            margin-left:0px;
-        }
 
         .lower-logo {
             height: 40px;
@@ -473,7 +466,7 @@ box-shadow: none !important;
         height: 50px;
         background-color: rgba(color($colors, grey, base),0.9);
         color: black;
-        font-size: 16px;
+        font-size: 12px;
         padding: 1vw;
        }
     //    .button-large-md {
@@ -530,7 +523,7 @@ box-shadow: none !important;
     }
 
     .transparent{
-    background-color:#00354dcb !important;
+    background-color: rgba(0, 53, 77, 0.925)  !important;
     color: #c3c8cd !important;
     font-size:1.5em;
     border-radius:  10px 0px  10px 0px;
@@ -623,12 +616,20 @@ box-shadow: none !important;
     .tC { margin-top: -50px !important; }
     .rC { margin-top: -140px !important;  }
     .folioCancel { margin-top: 0px !important; }
+        
+        .small-logo {
+           position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+        }
 $darl: #868f98;
 $O: #c3c8cd;
 $G: #00344d;
 $I: #57527e;
 }
-@media (max-width: 750px) {
+
+@media (max-width: 740px) {
  // .scroll-content {
     //     padding: 0 30px 0 30px;
     // }
@@ -718,14 +719,6 @@ box-shadow: none !important;
             margin: auto;
             padding: 50px 20px 0 20px !important;
             margin-bottom:50px;
-        }
-
-        .small-logo {
-            height: 40px;
-            width: auto;
-            margin: auto;
-            display: block;
-            margin-left:0px;
         }
 
         .lower-logo {
@@ -1172,7 +1165,7 @@ box-shadow: none !important;
     }
 
     .transparent{
-    background-color:#00354dcb !important;
+    background-color: rgba(0, 53, 77, 0.925) !important;
     color: #c3c8cd !important;
     font-size:1.5rem;
     border-radius:  10px 0px  10px 0px;
@@ -1183,6 +1176,7 @@ box-shadow: none !important;
     color:#c3c8cd;
     font-size:1.5rem;
     margin-top: -75px;
+    margin-left: 50px;
     margin-bottom: 0px;
     border-radius:   0px 10px 0px 10px ;
   }
@@ -1239,10 +1233,10 @@ box-shadow: none !important;
         color: white !important;
         font-weight: bold;
         font-family: Helvetica !important;
-        background: #868f98c0 !important;
+        background: rgba(134, 143, 152, 0.925) !important;
         border-radius: 5px;
         padding: .5vw !important;
-        font-size: 2vw !important;
+        font-size: 1.9vw !important;
     }
     .cck-container {
         border-radius: 20px !important;
@@ -1262,7 +1256,7 @@ box-shadow: none !important;
         height: 100% !important;
     }
     .btnchecout {  
-        background-color: #5e5d61e0 !important; 
+        background-color: rgba(94, 93, 97, .925) !important; 
        img { width: 40% !important; height: 40% !important; }
     }
     .paymentAccepted { font-size: 2rem; color: #00344d; }
@@ -1294,5 +1288,16 @@ box-shadow: none !important;
             font-size: 1.3rem !important;
         }
     }
+    
+        .small-logo {
+            position: absolute !important;
+            margin: auto !important;
+            bottom: 0 !important;
+            width: 30vw;
+        }
+
 }
+    @media (min-width: 850px) {
+        
+    }
 }

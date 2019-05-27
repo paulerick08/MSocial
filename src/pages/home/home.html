@@ -825,20 +825,9 @@ position: fixed;">
         </div>
       </ion-col>
     </ion-row>
-     <div>
-          <ion-row *ngIf="currentPage !== 'terms' && currentPage !== 'userDetails' && currentPage !== 'folio' && currentPage !== 'home' "> <!-- default size -->
-              <img class="small-logo" src="assets/imgs/AccorHotel/metasphere.png" alt="metasphere"> 
-          </ion-row>
-          <ion-row *ngIf="currentPage === 'terms'  || currentPage === 'folio' "> <!-- lower logo position -->
-              <img class="lower-logo" src="assets/imgs/AccorHotel/metasphere.png" alt="metasphere">
-          </ion-row>
-          <ion-row *ngIf="currentPage === 'home'">
-              <img class="lowest-logo" src="assets/imgs/AccorHotel/metasphere.png" alt="metasphere"> <!-- lower logo position for home -->
-          </ion-row>
-          <ion-row *ngIf="currentPage === 'userDetails'">
-              <img class="low-lowest-logo" src="assets/imgs/AccorHotel/metasphere.png" alt="metasphere"> <!-- lowest logo position for user details -->
-          </ion-row>
-      	  </div>
 
   </ion-grid>
+  <div>
+      <img class="small-logo" src="assets/imgs/AccorHotel/metasphere.png" alt="metasphere">
+  </div>
 </ion-content>

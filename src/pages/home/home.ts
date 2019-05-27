@@ -71,9 +71,9 @@ export class HomePage {
   
   pages = {
     //array of pages for check-in 
-    checkIn : ['checkinOption','confirmNumber', 'verification', 'passport','scanComplete','terms','userDetails','dtcm', 'dtcm2', 'signature','incidentalAccount','incidental','signature2','incidentalProcess','paymentAccepted','checkInSuccess'],
+    checkIn: ['checkinOption', 'confirmNumber', 'verification', 'passport', 'scanComplete', 'terms', 'userDetails', 'dtcm', 'dtcm2', 'signature', 'incidentalAccount', 'incidental', 'signature2', 'incidentalProcess', 'paymentAccepted', 'checkInSuccess'],
      //array of pages for check-out
-    checkOut: [ 'folio','cardAccount','cardDetails','checkoutSignature','paymentProcess','paymentAccepted2','checkOutSuccess']
+    checkOut: ['roomInfo', 'folio','cardAccount','cardDetails','checkoutSignature','paymentProcess','paymentAccepted2','checkOutSuccess']
   }
   
   private signaturePadOptions: Object = { // passed through to szimek/signature_pad constructor
