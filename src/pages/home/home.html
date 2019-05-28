@@ -525,7 +525,15 @@ position: fixed;">
                 <p>Sign here: <button (click)="clear()" float-right ion-button  icon-only >
                     <ion-icon color="dark" name="trash"></ion-icon>
                   </button> </p>
-                <signature-pad [options]="signaturePadOptions" (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad>
+
+
+                  <div color="subtle" padding style="width:100%;height:100%;text-align:center;vertical-align: middle;">
+                    <div class="signPadContaier">
+                      <signature-pad [options]="signaturePadOptions" (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad>
+                    </div>
+                  </div>
+
+              
               </div>
           </div>
           <div text-center *ngIf="currentPage === 'paymentAccepted'" class="checkInSuccess tC"> <!-- payment success content -->
@@ -808,19 +816,30 @@ position: fixed;">
 
             <ion-col col-4>
 
-             <button float-left class="cancel" (click)="cancelCheckout()" ion-button clear color="light" *ngIf="currentPage !== 'incidentalProcess' && currentPage !== 'paymentProcess' && currentPage !== 'checkinOption' && currentPage !== 'confirmNumber' && currentPage !== 'verification' && currentPage !== 'passport' && currentPage !== 'scanComplete' && currentPage !== 'dtcm2' && currentPage !== 'signature' && currentPage !== 'incidentalAccount' && currentPage !== 'incidental' && currentPage !== 'signature2' && currentPage !== 'paymentAccepted' && currentPage !== 'paymentAccepted2' && currentPage !== 'settings'">CANCEL</button> 
+             <button float-left class="cancel" (click)="cancelCheckout()" ion-button clear color="light" *ngIf="currentPage !== 'checkoutSignature' && currentPage !== 'incidentalProcess' && currentPage !== 'paymentProcess' && currentPage !== 'checkinOption' && currentPage !== 'confirmNumber' && currentPage !== 'verification' && currentPage !== 'passport' && currentPage !== 'scanComplete' && currentPage !== 'dtcm2' && currentPage !== 'signature' && currentPage !== 'incidentalAccount' && currentPage !== 'incidental' && currentPage !== 'signature2' && currentPage !== 'paymentAccepted' && currentPage !== 'paymentAccepted2' && currentPage !== 'settings'">CANCEL</button> 
 
-             <button float-left class="cancel" (click)="cancelCheckin()" ion-button clear color="light" *ngIf="currentPage !== 'incidentalProcess' && currentPage !== 'paymentProcess' && currentPage !== 'roomInfo' && currentPage !== 'cardAccount' && currentPage !== 'cardDetails' && currentPage !== 'checkoutSignature' && currentPage !== 'paymentAccepted2' && currentPage !== 'paymentAccepted' && currentPage !== 'incidentalAccount' && currentPage !== 'settings'">CANCEL</button>
+             <button float-left class="cancel" (click)="cancelCheckin()" ion-button clear color="light" *ngIf="currentPage !== 'checkoutSignature' && currentPage !== 'signature' &&  currentPage !== 'signature2' && currentPage !== 'incidentalProcess' && currentPage !== 'paymentProcess' && currentPage !== 'roomInfo' && currentPage !== 'cardAccount' && currentPage !== 'cardDetails' && currentPage !== 'checkoutSignature' && currentPage !== 'paymentAccepted2' && currentPage !== 'paymentAccepted' && currentPage !== 'incidentalAccount' && currentPage !== 'settings'">CANCEL</button>
+            <button float-left class="cancel signbuttonCancel" (click)="cancelCheckin()" ion-button clear color="light" *ngIf="currentPage === 'signature' ||  currentPage === 'signature2' || currentPage === 'checkoutSignature'">CANCEL</button>
 
 
             </ion-col>
 
             <ion-col col-8 style="margin-top: 50px;" class="col-E">
-              <button class="transparent" (click)="back()" *ngIf="currentPage !== 'incidentalProcess' && currentPage !== 'paymentProcess' && currentPage !== 'settings'" ion-button>BACK</button>
-              <button class="transparent" (click)="next()" *ngIf="currentPage !== 'incidentalProcess' && currentPage !== 'paymentProcess' && currentPage !== 'signature' && currentPage !== 'checkinOption' && currentPage !== 'passport' && currentPage !== 'cardAccount' && currentPage !== 'incidentalAccount' && currentPage !== 'settings' " ion-button >NEXT</button>
-              <button  class="transparent" (click)="next()" *ngIf="currentPage === 'signature' || currentPage === 'userDetails'" ion-button>Next</button>
+              <!--Other pages--><button class="transparent backs" (click)="back()" *ngIf=" currentPage !== 'checkoutSignature' && currentPage !== 'roomInfo' && currentPage !== 'scanComplete' && currentPage !== 'verification' && currentPage !== 'confirmNumber' && currentPage !== 'signature' && currentPage !== 'incidentalProcess' && currentPage !== 'signature2' && currentPage !== 'paymentProcess' && currentPage !== 'settings' && currentPage !== 'checkinOption'" ion-button>BACK</button> <!---CheckinOption-->
+              <button class="transparent CheckInOptionBack" (click)="back()" *ngIf="currentPage === 'checkinOption'" ion-button> BACK</button> <!--CheckinOption-->
+              <button class="transparent confirmNumberBack" (click)="back()" *ngIf="currentPage === 'confirmNumber' || currentPage === 'verification' || currentPage === 'roomInfo'" ion-button> BACK</button>
+              <button class="transparent backs" (click)="next()" *ngIf="currentPage === 'confirmNumber' || currentPage === 'verification' || currentPage === 'roomInfo'"ion-button>NEXT</button>
+              <!--Other pages--><button class="transparent backs" (click)="next()" *ngIf=" currentPage !== 'checkoutSignature' && currentPage !== 'roomInfo' && currentPage !== 'verification' && currentPage !== 'confirmNumber' && currentPage !== 'incidentalProcess' && currentPage !== 'paymentProcess' && currentPage !== 'signature2' && currentPage !== 'signature' && currentPage !== 'checkinOption' && currentPage !== 'passport' && currentPage !== 'cardAccount' && currentPage !== 'incidentalAccount' && currentPage !== 'settings' " ion-button >NEXT</button>
+              <button  class="transparent" (click)="next()" *ngIf="currentPage === 'userDetails'" ion-button>Next</button>
+              <div *ngIf="currentPage === 'signature' || currentPage === 'signature2' || currentPage === 'checkoutSignature'" class="signButton">
+                <button class="transparent" (click)="next()"ion-button>Next</button>
+                <!--Signature-->
+                <button class="transparent signaturebtn" (click)="back()" ion-button>BACK</button>
+                <!--Signature-->
+              </div>
+              
               <button  class="transparent" (click)="back()" *ngIf="currentPage === 'userDetails'" ion-button>Back</button>      
-              <button  class="transparent" (click)="next()" *ngIf="currentPage === 'passport'" ion-button >Capture</button>
+              <button  class="transparent captureBtn" (click)="next()" *ngIf="currentPage === 'passport'" ion-button >Capture</button>
             </ion-col>
 
           </ion-row> <!-- powered by metasphere logo -->

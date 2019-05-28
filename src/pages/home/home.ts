@@ -71,18 +71,20 @@ export class HomePage {
   
   pages = {
     //array of pages for check-in 
-    checkIn: ['checkinOption', 'confirmNumber', 'verification', 'passport', 'scanComplete', 'terms', 'userDetails', 'dtcm', 'dtcm2', 'signature', 'incidentalAccount', 'incidental', 'signature2', 'incidentalProcess', 'paymentAccepted', 'checkInSuccess'],
-     //array of pages for check-out
+    checkIn: ['checkinOption', 'confirmNumber', 'verification', 'passport', 'scanComplete', 'terms', 'userDetails', 'dtcm', 'dtcm2','signature', 'incidentalAccount', 'incidental', 'signature2', 'incidentalProcess', 'paymentAccepted', 'checkInSuccess'],
+     //array of pages for check-out 
     checkOut: ['roomInfo', 'folio','cardAccount','cardDetails','checkoutSignature','paymentProcess','paymentAccepted2','checkOutSuccess']
   }
   
-  private signaturePadOptions: Object = { // passed through to szimek/signature_pad constructor
-    'minWidth': 1,
-    'canvasWidth': 250,
-    'canvasHeight': 220
-  };
+  
 
   @ViewChild(SignaturePad) signaturePad: SignaturePad;
+  
+  public signaturePadOptions: Object = {
+    'minWidth': 2,
+    'canvasWidth': 400,
+    'canvasHeight': 200
+  };
  
   constructor(
     private abbyyRTR: AbbyyRTR, 
@@ -132,10 +134,20 @@ export class HomePage {
   ionViewDidLoad(){
     // this.signaturePad is now available
     const signatureContainerWidth: any = document.querySelector('.signature .container');
-    const canvas:any =  document.querySelector('.signature .container canvas');
-    this.signaturePad.set('minWidth', 1); // set szimek/signature_pad options at runtime
-    this.signaturePad.clear(); //only clears the first signaturePad. 
+    // this.signaturePad.resizeCanvas();
+    this.signaturePad.clear();
   }
+  // ngAfterViewInit() {}
+
+  canvasResize() {
+    let canvas = document.querySelector('canvas');
+    var ratio = Math.max(window.devicePixelRatio || 1, 1);
+    canvas.width = canvas.offsetWidth * ratio;
+    canvas.height = canvas.offsetHeight * ratio;
+    canvas.getContext("2d").scale(ratio, ratio);
+  }
+
+
 
   async recognize() { //image recognition process
     console.log('try')
