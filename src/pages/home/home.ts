@@ -71,12 +71,19 @@ export class HomePage {
   
   pages = {
     //array of pages for check-in 
-    checkIn: ['checkinOption', 'confirmNumber', 'verification', 'passport', 'scanComplete', 'terms', 'userDetails', 'dtcm', 'dtcm2','signature', 'incidentalAccount', 'incidental', 'signature2', 'incidentalProcess', 'paymentAccepted', 'checkInSuccess'],
+    checkIn: ['checkinOption', 'confirmNumber', 'verification', 'passport', 'scanComplete', 'terms', 'userDetails', 'dtcm', 'dtcm2', 'signature', 'incidentalAccount', 'incidental', 'signature2', 'incidentalProcess', 'paymentAccepted', 'checkInSuccess'],
      //array of pages for check-out 
     checkOut: ['roomInfo', 'folio','cardAccount','cardDetails','checkoutSignature','paymentProcess','paymentAccepted2','checkOutSuccess']
   }
-  
-  
+  otherPages = {
+    passportCheck: ['ppStep1', 'ppStep2', 'ppStep3', 'ppStep4', 'ppStep5' ],
+    qrCode: ['qrStep1', 'qrStep2', 'qrStep3', 'qrStep4', 'qrStep5', 'qrStep6' ],
+    idCard: ['idStep1', 'idStep2', 'idStep3', 'idStep4', 'idStep5'],
+    walkIn: ['walkStep1', 'walkStep2', 'walkStep3', 'walkStep4', 'walkStep5', 'walkStep6'],
+    msocialAccnt: ['msocialStep1', 'msocialStep2', 'msocialStep3', 'msocialStep4', 'msocialStep5', 'msocialStep6', 'msocialStep7']
+  }
+  otherPagesStatus;
+  otherPageNumber = 0;
 
   @ViewChild(SignaturePad) signaturePad: SignaturePad;
   
@@ -261,6 +268,7 @@ recognition.detectText(params, (err, data) => {
   checkIn() { //to check-in page
     this.selectedPages = 'checkIn'
     this.currentPage = this.pages[this.selectedPages][this.page];
+    console.log(this.currentPage)
   }
 
   checkOut() { //to check-out page
@@ -276,6 +284,7 @@ recognition.detectText(params, (err, data) => {
       this.page--;
       this.page--;
       this.currentPage = this.pages[this.selectedPages][this.page];
+     this.otherPageNumber--;
     }else{ //default back functionality, clears variable data
       this.page--;
       this.confirmNumber=undefined;
@@ -310,6 +319,14 @@ recognition.detectText(params, (err, data) => {
   this.visit='';
       this.currentPage = this.pages[this.selectedPages][this.page];
 
+    }
+    if(this.otherPagesStatus) {
+      this.otherPageNumber--;
+      if (this.otherPageNumber === 0) {
+        this.otherPagesStatus = '';
+        console.log(this.otherPageNumber)
+        this.currentPage = this.pages[this.selectedPages][this.page];
+      }
     }
   }
 
@@ -361,6 +378,8 @@ alert.present();
 
 quit(){
     this.page = 0;
+    this.otherPageNumber = 0;
+  this.otherPagesStatus = '';
     this.currentPage = 'home';
     this.confirmNumber = undefined;
     this.signaturePad.clear();
@@ -387,7 +406,10 @@ quit(){
   this.mobNumber='';
   this.visit='';
   }
-  next() {//to next page
+
+  
+  next(type) {//to next page
+    console.log(type)
     console.log(this.currentPage);
     if(this.currentPage === 'confirmNumber') { 
       const loader = this.loadingCtrl.create({
@@ -455,6 +477,7 @@ quit(){
       }, 2000);
         
       } else {
+        //Validation Confirmation Number
         this.toast.create({
           duration: 2000,
           message: 'Please Check Your Confirmation Number'
@@ -665,8 +688,16 @@ quit(){
         }).present();
       }
     }else{
-      this.page++;
-      this.currentPage = this.pages[this.selectedPages][this.page];
+      if (!type) {
+        this.page++;
+        this.currentPage = this.pages[this.selectedPages][this.page];
+      } else {
+        this.currentPage = this.otherPages[type][this.otherPageNumber];
+        this.otherPagesStatus = type;
+        this.otherPageNumber++;
+        console.log(this.currentPage)
+        console.log(this.otherPageNumber);
+      }
     }
     
 
@@ -809,27 +840,27 @@ quit(){
 
   showAmex(){
    this.card = 'amex';
-   this.next();
+   this.next(null);
   }
 
   showVisa(){
     this.card = 'visa';
-    this.next();
+    this.next(null);
   }
 
   showMaster(){
     this.card = 'master';
-    this.next();
+    this.next(null);
   }
 
   showJCB(){
     this.card = 'jcb';
-    this.next();
+    this.next(null);
   }
 
   showDiners(){
     this.card = 'diners';
-    this.next();
+    this.next(null);
   }
 
   settings(){

@@ -52,6 +52,7 @@ box-shadow: none !important;
                 margin-top: 100px;
                 height: 340px;
                 
+                
                 hr{
                     color:black;
                     background-color:#ffffff ;
@@ -414,7 +415,8 @@ box-shadow: none !important;
             padding: 10px 3px 0 3px;
             color: #000000c2;
             background-color: rgba(255, 255, 255, 0.69);
-
+            width: 70%;
+            margin: 0 auto;
             p {
                 font-size: 16px;
                 color:rgba(0, 0, 0, 0.7);
@@ -539,7 +541,8 @@ box-shadow: none !important;
     background-color:rgba(87, 82, 126, 0.925) !important;
     color:#c3c8cd;
     font-size:1.5em;
-    margin-top: 50px;
+    margin-top: -12px;
+    margin-left: 2vw;
     border-radius:   0px 10px 0px 10px ;
   }
 
@@ -619,8 +622,11 @@ box-shadow: none !important;
     }
     .paymentAccepted { font-size: 2rem; color: #00344d; }
     .cancels .spaceUps  { margin-top: 150px !important; }
-    .tC { margin-top: -50px !important; }
-    .rC { margin-top: -140px !important;  }
+    .tC { margin-top: -50px !important; 
+        .container {
+            margin-bottom: -10vw!important;
+        } }
+    .rC { margin-top: -140px !important; }
     .folioCancel { margin-top: 0px !important; }
         
         .small-logo {
@@ -630,7 +636,29 @@ box-shadow: none !important;
             margin-top:5px;
             margin-bottom:5px;
             display: block;
+            
         }
+        .signButton {
+        margin-top: -20vw;
+        margin-right: 16vw;
+    }
+    .signbuttonCancel {
+        margin-top: -13vw;
+        margin-left: 16vw;
+    }
+    .backs {
+        margin-top: -13vw;
+        margin-right: 3vw;
+    }
+    .CheckInOptionBack {
+        margin-right: 3vw;
+    }
+    // .confirmNumberBack [
+        
+    // ]
+    .captureBtn {
+        margin-right: 3vw;
+    }
 $darl: #868f98;
 $O: #c3c8cd;
 $G: #00344d;
@@ -1333,12 +1361,14 @@ box-shadow: none !important;
             display: block;
         }
     .signButton {
+        margin-top: 0px !important;
         margin-right: 11vw;
     }
     .signbuttonCancel {
         margin-left: 10vw;
     }
     .backs {
+        margin-top: 0px !important;
         margin-right: 3vw;
     }
     .CheckInOptionBack {
@@ -1349,6 +1379,137 @@ box-shadow: none !important;
     // ]
     .captureBtn {
         margin-right: 3vw;
+    }
+    
+    .passportScreen {
+                background-color: #e0e5e9;
+                border: 1px solid black;
+                height: 20vw;
+                width: 100%;
+            }
+             .proceedPp {
+                margin: 5px 0px 0px 0px;
+                right: 1vw;
+                position: absolute;
+            }
+    .passportBtn {
+        font-size: 2rem !important; 
+    }
+    .head {
+           text-align: left !important;
+           
+    }
+    .cckP {
+        color: black !important;
+    }
+    .cckpDesc { 
+        font-size: 1.5rem; 
+        font-style: italic
+    }
+    .containerStep {
+        font-size: 1.3rem;
+        background-color: rgba(255, 255, 255, 0.69);    
+        margin: 0 auto;
+        text-align: center;
+        padding: 5px;
+        height: 25vw;
+        margin-bottom: 10px;
+            overflow: auto;
+        p {
+            line-height: 1.5rem;
+        }
+        .otherC {
+            right: 0;
+            position: relative
+        }
+        .overf {
+        }
+    }
+    .passsportCheck2 {
+        margin-bottom: 10px;
+    }
+    .termPp {
+        overflow: scroll;
+        height: 15vw;
+        h4, {
+            font-size: 1.5rem;
+        }
+        h5 {
+            font-size: 1rem !important;
+        }
+    }
+    .termContainerPp {
+        padding: 10px !important;
+        font-size: 10px !important;
+    }
+    .signPadContaierPP {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: white;
+    }
+    .signPp {
+        left: 0;
+        position: absolute;
+        margin-top: 1vw;
+    }
+    .signPps {
+        left: 0;
+        margin-top: 5vw;
+        position: absolute;
+        padding: 8px;
+        background-color: rgba(94, 93, 97, .925) ;
+    }
+    .signPadpP {
+        margin-left: 12vw;
+    }
+    .spacingPass {
+        margin-top: 7vw;
+    }
+    .spacingPp {
+        margin: 0px 4vw;
+    }
+    .fonty {
+        font-size: 1.2rem !important;
+        left: -50vw;
+    }
+    .step4 {
+        h5 {
+            margin-top: -4vw !important;
+            font-size: 1.2rem !important;
+        }
+        .passportScreen {
+              background-color: #e0e5e9;
+                border: 1px solid black;
+                height: 20vw;
+                width: 100%;
+                font-size: 1rem;
+                padding: 10px;
+        }
+        .signPadpP {
+            margin-top: 1vw;
+        }
+        .row1 {
+            margin-top: 2vw;
+        }
+        .passportBtn {
+            padding: 3vw;
+        }
+    }
+    .step5 {
+        text-align: center;
+        font-weight: bold;
+        
+        .passportBtn {
+            margin: 0 auto;
+            margin-top: 5px;
+            display: block;
+            position: relative;
+        }
+        .contain {
+            background-color: rgba(255, 255, 255, 0.69);    
+            padding: 10px;
+        }
     }
 }
     @media (min-width: 850px) {
