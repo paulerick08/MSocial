@@ -1642,6 +1642,47 @@ box-shadow: none !important;
             padding: 10px;
         }
     }
+    .qrSteps {
+        .qrContainer {
+            .passportScreen {
+                height: 25vw !important;
+            }
+            .retry {
+                margin: 0 auto;
+                display: block;
+                margin-top: 2vw;
+            }
+            .qrProceed {
+                font-size: 1.5rem !important;
+                padding: 10px;
+                width: 90%;
+                bottom: 0;
+                margin-bottom: 1vw;
+            }
+        }
+    }
+    .qrCode3 {
+        .qrContainer {
+            .retry {
+                bottom: 0 !important;
+                margin-bottom: 1vw;
+            }
+            .col1 {
+                height: 20vw;
+            }
+        }
+    }
+    .xtraspaceSign {
+        margin-top: 8vw !important;
+        color: #ffffff;
+        font-weight: 600;
+    }
+    .xtraspaceReset {
+         margin-top: 11vw !important;
+    }
+    .xtraspacePad {
+         margin-top: 6vw !important;
+    }
 }
     @media (min-width: 850px) {
         
