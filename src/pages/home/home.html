@@ -66,7 +66,8 @@ position: fixed;">
         ==='signature' || currentPage ==='incidentalAccount' || currentPage ==='incidental' || currentPage ==='signature2' || currentPage
         ==='incidentalProcess' || currentPage ==='paymentAccepted' || currentPage === 'checkInSuccess') && !( currentPage === 'folio'
         || currentPage === 'cardAccount' || currentPage === 'cardDetails' || currentPage === 'checkoutSignature' || currentPage ===
-        'paymentProcess' || currentPage === 'paymentAccepted2' || currentPage === 'checkOutSuccess')">
+        'paymentProcess' || currentPage === 'paymentAccepted2' || currentPage === 'checkOutSuccess') && !(otherPagesStatus === 'passportCheck' || otherPagesStatus === 'qrCode' || otherPagesStatus === 'walkIn' || otherPagesStatus
+        === 'idCard' || otherPagesStatus === 'msocialAccnt')">
       <ion-col class=""> <!-- right side of the app -->
         <div class="gray-box-content">
          
@@ -166,7 +167,7 @@ position: fixed;">
 
           <!-- PASSPORT -->
           <!--Step 1-->
-          <div text-center class="passsportCheck" *ngIf="currentPage === 'ppStep1'">
+          <div text-center class="passsportCheck stepsMargin" *ngIf="currentPage === 'ppStep1'">
               <h4 class="cck cckP head">Check In: Step 1</h4>
               <h4 class="head cckpDesc">Place your passport on the Scanner and click Scan</h4>
               <hr margin-bottom>
@@ -174,7 +175,7 @@ position: fixed;">
                 <ion-row>
                   <ion-col>
                     <ion-row>
-                      <button class="transparent passportBtn" (click)="scan()" ion-button>
+                      <button class="transparent passportBtn" (click)="capturePassport()" ion-button>
                       Scan Passport</button>
                     </ion-row>
                     <ion-row>
@@ -193,7 +194,7 @@ position: fixed;">
               </div>
             </div>
             <!--Step 2-->
-            <div text-center *ngIf="currentPage === 'ppStep2'" class="passsportCheck2">
+            <div text-center *ngIf="currentPage === 'ppStep2'" class="passsportCheck2 stepsMargin">
               <h4 class="cck cckP head">Check In: Step 2</h4>
               <h4 class="head cckpDesc">Review registration card</h4>
               <hr margin-bottom>
@@ -269,7 +270,7 @@ position: fixed;">
                 Proceed to Step 3</button>
             </div>
             <!--Step 3-->
-              <div *ngIf="currentPage === 'ppStep3'" class="step3">
+              <div *ngIf="currentPage === 'ppStep3'" class="step3 stepsMargin">
                 <h4 class="cck cckP head">Check In: Step 3</h4>
                 <h4 class="head cckpDesc">Read and Agree to the terms and Conditions</h4>
                 <hr margin-bottom>
@@ -311,7 +312,7 @@ position: fixed;">
                   </ion-row>
               </div>
               <!--Step 4-->
-              <div *ngIf="currentPage === 'ppStep4'" class="step4">
+              <div *ngIf="currentPage === 'ppStep4'" class="step4 stepsMargin">
                 <h4 class="cck cckP head">Check In: Step 4</h4>
                 <h4 class="head cckpDesc">Settle incidental payment</h4>
                 <hr margin-bottom>
@@ -362,7 +363,7 @@ position: fixed;">
               </div>
 
               <!--Step 5-->
-              <div *ngIf="currentPage === 'ppStep5'" class="step5">
+              <div *ngIf="currentPage === 'ppStep5'" class="step5 stepsMargin">
                 <h4 class="cck cckP head">Check In: Completed</h4>
                 <hr margin-bottom>
                 <div class="contain">
@@ -377,7 +378,7 @@ position: fixed;">
 
               <!-- ID Card -->
               <!--Step 1-->
-              <div text-center class="passsportCheck" *ngIf="currentPage === 'idStep1'">
+              <div text-center class="passsportCheck stepsMargin" *ngIf="currentPage === 'idStep1'">
                 <h4 class="cck cckP head">Check In: Step 1</h4>
                 <h4 class="head cckpDesc">Place your id on the Scanner and click Scan</h4>
                 <hr margin-bottom>
@@ -385,7 +386,7 @@ position: fixed;">
                   <ion-row>
                     <ion-col>
                       <ion-row>
-                        <button class="transparent passportBtn" (click)="scan()" ion-button>
+                        <button class="transparent passportBtn" (click)="captureID()" ion-button>
                           Scan Passport</button>
                       </ion-row>
                       <ion-row>
@@ -404,7 +405,7 @@ position: fixed;">
                 </div>
               </div>
               <!--Step 2-->
-              <div text-center *ngIf="currentPage === 'idStep2'" class="passsportCheck2">
+              <div text-center *ngIf="currentPage === 'idStep2'" class="passsportCheck2 stepsMargin">
                 <h4 class="cck cckP head">Check In: Step 2</h4>
                 <h4 class="head cckpDesc">Review registration card</h4>
                 <hr margin-bottom>
@@ -480,7 +481,7 @@ position: fixed;">
                   Proceed to Step 3</button>
               </div>
               <!--Step 3-->
-              <div *ngIf="currentPage === 'idStep3'" class="step3">
+              <div *ngIf="currentPage === 'idStep3'" class="step3 stepsMargin">
                 <h4 class="cck cckP head">Check In: Step 3</h4>
                 <h4 class="head cckpDesc">Read and Agree to the terms and Conditions</h4>
                 <hr margin-bottom>
@@ -522,7 +523,7 @@ position: fixed;">
                 </ion-row>
               </div>
               <!--Step 4-->
-              <div *ngIf="currentPage === 'idStep4'" class="step4">
+              <div *ngIf="currentPage === 'idStep4'" class="step4 stepsMargin">
                 <h4 class="cck cckP head">Check In: Step 4</h4>
                 <h4 class="head cckpDesc">Settle incidental payment</h4>
                 <hr margin-bottom>
@@ -575,7 +576,7 @@ position: fixed;">
               </div>
               
               <!--Step 5-->
-              <div *ngIf="currentPage === 'idStep5'" class="step5">
+              <div *ngIf="currentPage === 'idStep5'" class="step5 stepsMargin">
                 <h4 class="cck cckP head">Check In: Completed</h4>
                 <hr margin-bottom>
                 <div class="contain">
@@ -617,7 +618,7 @@ position: fixed;">
                 </div>
               </div>  
               <!--Step 2-->
-              <div text-center *ngIf="currentPage === 'qrStep2'" class="passsportCheck2">
+              <div text-center *ngIf="currentPage === 'qrStep2'" class="passsportCheck2 stepsMargin">
                 <h4 class="cck cckP head">Check In: Step 2</h4>
                 <h4 class="head cckpDesc">Review registration card</h4>
                 <hr margin-bottom>
@@ -680,7 +681,7 @@ position: fixed;">
                           <span margin-left>01/02/2019</span>
                         </p>
                         <p style="color:black" align="left">
-                          <span margin-left>Double Delux</span>
+                          <span margin-left>Double Deluxe</span>
                         </p>
                         <p style="color:black" align="left">
                           <span margin-left>2</span>
@@ -693,7 +694,7 @@ position: fixed;">
                   Proceed to Step 3</button>
               </div>
               <!--Step 3-->
-              <div text-center class="qrCode3" *ngIf="currentPage === 'qrStep3'">
+              <div text-center class="qrCode3 stepsMargin" *ngIf="currentPage === 'qrStep3'">
                 <h4 class="cck cckP head">Check In: Step 3</h4>
                 <h4 class="head cckpDesc">Place your passport on the Scanner and click Scan</h4>
                 <hr margin-bottom>
@@ -701,11 +702,11 @@ position: fixed;">
                   <ion-row>
                     <ion-col col-6 class="col1">
                       <ion-row>
-                        <button class="transparent passportBtn" (click)="scan()" ion-button>
+                        <button class="transparent passportBtn" (click)="captureID()" ion-button>
                           Scan ID Card</button>
                       </ion-row>
                       <ion-row>
-                        <button class="transparent passportBtn" (click)="retry()" ion-button>
+                        <button class="transparent passportBtn" (click)="capturePassport()" ion-button>
                            Scan Passport</button>
                       </ion-row>
                       <ion-row>
@@ -726,7 +727,7 @@ position: fixed;">
                 </div>
               </div>
               <!--Step 4-->
-              <div *ngIf="currentPage === 'qrStep4'" class="step3">
+              <div *ngIf="currentPage === 'qrStep4'" class="step3 stepsMargin">
                 <h4 class="cck cckP head">Check In: Step 4</h4>
                 <h4 class="head cckpDesc">Read and Agree to the terms and Conditions</h4>
                 <hr margin-bottom>
@@ -768,8 +769,8 @@ position: fixed;">
                 </ion-row>
               </div>
               <!--Step 5-->
-              <div *ngIf="currentPage === 'qrStep5'" class="step4">
-                <h4 class="cck cckP head">Check In: Step 4</h4>
+              <div *ngIf="currentPage === 'qrStep5'" class="step4 stepsMargin">
+                <h4 class="cck cckP head">Check In: Step 5</h4>
                 <h4 class="head cckpDesc">Settle incidental payment</h4>
                 <hr margin-bottom>
                 <div class="">
@@ -821,7 +822,7 @@ position: fixed;">
               </div>
               
               <!--Step 6-->
-              <div *ngIf="currentPage === 'qrStep6'" class="step5">
+              <div *ngIf="currentPage === 'qrStep6'" class="step5 stepsMargin">
                 <h4 class="cck cckP head">Check In: Completed</h4>
                 <hr margin-bottom>
                 <div class="contain">
@@ -832,6 +833,673 @@ position: fixed;">
                 <button class="transparent proceedPp passportBtn spacingPass" (click)="quit()" ion-button>
                   Done</button>
               </div>
+
+
+            <!--Walk In-->
+            <!--Step 1-->
+              <div *ngIf="currentPage === 'walkStep1'" class="walkStep1" >
+                <!-- passport details display -->
+                <h4 class="cck cckP head">Check In: Step 1</h4>
+                <h4 class="head cckpDesc">Fill up the check-in form</h4>
+                <div class="userDetails regCard rC">
+                  
+                <ion-row margin-bottom class="container " text-left>
+                  <ion-col col-3>
+                    <p no-margin>First Name:
+                      <span margin-left></span>
+                    </p>
+                    <p no-margin>Middle Name:
+                      <span margin-left></span>
+                    </p>
+                    <p no-margin>Last Name:
+                      <span margin-left></span>
+                    </p>
+                    <p no-margin>Company:
+                      <span margin-left></span>
+                    </p>
+                    <p no-margin>Mobile Number:
+                      <span margin-left></span>
+                    </p>
+                    <p no-margin>No of Adults:
+                      <span margin-left></span>
+                    </p>
+                    <p no-margin>No of Children:
+                      <span margin-left></span>
+                    </p>
+                    <!-- <div>
+                      <span>Error: there are no rooms available for the details you have specified. Please update and check the availabality again. </span>>
+                    </div> -->
+                  </ion-col>
+                  <ion-col col-3>
+                    <p no-margin>
+                      <input style="width:98px" type="text" value="" name="" id="">
+                      <span margin-left></span>
+                    </p>
+                    <p no-margin>
+                      <input style="width:98px" type="text" value="" name="" id="">
+                      <span margin-left></span>
+                    </p>
+                    <p no-margin>
+                      <input style="width:98px" type="text" value="" name="" id="">
+                      <span margin-left></span>
+                    </p>
+                    <p no-margin>
+                      <input style="width:98px" type="text" value="" name="" id="">
+                      <span margin-left></span>
+                    </p>
+                    <p no-margin>
+                      <input style="width:98px" type="number" value="" name="" id="">
+                      <span margin-left></span>
+                    </p>
+                    <p no-margin>
+                      <input style="width:98px" type="number" value="" name="" id="">
+                      <span margin-left></span>
+                    </p>
+                    <p no-margin>
+                      <input style="width:98px" type="number" value="" name="" id="">
+                      <span margin-left></span>
+                    </p>       
+                      </ion-col>
+              
+                                <ion-col col-3>
+                                  <p>Special instruction: <span margin-left></span></p> <br><br>
+                                  <p no-margin>Arrival Date: <span margin-left></span></p>
+                                  <p no-margin>Arrival Time: <span margin-left></span></p>
+                                  <p no-margin>Departure Date: <span margin-left></span></p>
+                                  <p no-margin>Room type: <span margin-left></span></p>
+                                  <p no-margin>No of rooms: <span margin-left></span></p>
+                                 
+                                </ion-col>
+                              <ion-col col-3>
+                                  <p >
+                                    <textarea style="width:98px;"  rows="3" type="number" value="" name="" id=""> </textarea>
+                                    <span margin-left></span>
+                                  </p>
+                                  <br>
+                                  <br>
+                                  <p>
+                                    <input [(ngModel)]="date2" style="width:98px" type="text" name="" id="">
+                                    <span margin-left></span>
+                                  </p>
+                                  <p no-margin>
+                                    <input  [(ngModel)]="time" style="width:98px" type="text" value="" name="" id=""> 
+                                    
+                                    <span margin-left></span>
+                                  </p>
+                                  <p no-margin>
+                                    <input style="width:98px" type="text" value="" name="" id="">
+                                    <span margin-left></span>
+                                  </p>
+                                  <p no-margin> <select style=" width: 98px;" [(ngModel)]='emirateCode '>
+                                              <option style="display: none;" value="">Please Select</option>
+                                              <option value="type1">Room type 1</option>
+                                              <option value="type2">Room type 2</option>
+                                              <option value="type3">Room type 3</option>
+                                              <option value="type4">Room type 4</option>
+                                              <option value="type5">Room type 5</option>
+                                            </select></p>
+                                  <p no-margin>
+                                    <input style="width:98px" type="number" value="" name="" id="">
+                                    <span margin-left></span>
+                                  </p>
+                                </ion-col>
+              
+                                
+                              </ion-row>
+                              </div>
+                            <button class="transparent proceedPp passportBtn" (click)="next('walkIn')" ion-button>
+                              Proceed to Step 2</button>
+                            </div>
+            <!--Step 2-->
+            <div text-center class="qrCode3 stepsMargin" *ngIf="currentPage === 'walkStep2'">
+              <h4 class="cck cckP head">Check In: Step 2</h4>
+              <h4 class="head cckpDesc">Place your passport on the Scanner and click Scan</h4>
+              <hr margin-bottom>
+              <div class="qrContainer">
+                <ion-row>
+                  <ion-col col-6 class="col1">
+                    <ion-row>
+                      <button class="transparent passportBtn" (click)="captureID()" ion-button>
+                        Scan ID Card</button>
+                    </ion-row>
+                    <ion-row>
+                      <button class="transparent passportBtn" (click)="capturePassport()" ion-button>
+                        Scan Passport</button>
+                    </ion-row>
+                    <ion-row>
+                    </ion-row>
+                  </ion-col>
+                  <ion-col col-6>
+                    <div class="passportScreen">
+            
+                    </div>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <button class="transparent passportBtn retry" (click)="retry()" ion-button>
+                    Retry</button>
+                  <button class="transparent proceedPp passportBtn" (click)="next('walkIn')" ion-button>
+                    Proceed to Step 3</button>
+                </ion-row>
+              </div>
+            </div>
+            <!--Step 3-->
+            <div text-center *ngIf="currentPage === 'walkStep3'" class="passsportCheck2 stepsMargin">
+              <h4 class="cck cckP head">Check In: Step 3</h4>
+              <h4 class="head cckpDesc">Review registration card</h4>
+              <hr margin-bottom>
+              <div class="containerStep">
+                <ion-row class="overf">
+                  <ion-row>
+                    <ion-col col-6 class="">
+                      <p style="color:black" align="right">First Name:</p>
+                      <p style="color:black" align="right">Middle Name:</p>
+                      <p style="color:black" align="right">Last Name:</p>
+                      <p style="color:black" align="right">Company:</p>
+                      <p style="color:black" align="right">Mobile Number:</p>
+                      <p style="color:black" align="right">No. of Adults</p>
+                      <p style="color:black" align="right">No. of Children:</p>
+                    </ion-col>
+                    <ion-col col-6 class="">
+                      <p style="color:black" align="left">
+                        <span margin-left>Charles</span>
+                      </p>
+                      <p style="color:black" align="left">
+                        <span margin-left>Diel</span>
+                      </p>
+                      <p style="color:black" align="left">
+                        <span margin-left>Jaranilla</span>
+                      </p>
+                      <p style="color:black" align="left">
+                        <span margin-left>metasphere</span>
+                      </p>
+                      <p style="color:black" align="left">
+                        <span margin-left>0922909029</span>
+                      </p>
+                      <p style="color:black" align="left">
+                        <span margin-left>10</span>
+                      </p>
+                      <p style="color:black" align="left">
+                        <span margin-left>4</span>
+                      </p>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row class="otherC">
+                    <ion-col col-6 class="">
+                      <p style="color:black" align="right">Special instruction:</p>
+                      <p style="color:black" align="right">Arrival Date:</p>
+                      <p style="color:black" align="right">Arrival Time:</p>
+                      <p style="color:black" align="right">Departure Date:</p>
+                      <p style="color:black" align="right">Room Type:</p>
+                      <p style="color:black" align="right">Number of Rooms:</p>
+                    </ion-col>
+                    <ion-col col-6 class="">
+                      <p style="color:black" align="left">
+                        <span margin-left>I want to have a welldone egss</span>
+                      </p>
+                      <p style="color:black" align="left">
+                        <span margin-left>01/01/2019</span>
+                      </p>
+                      <p style="color:black" align="left">
+                        <span margin-left>11:05am</span>
+                      </p>
+                      <p style="color:black" align="left">
+                        <span margin-left>01/02/2019</span>
+                      </p>
+                      <p style="color:black" align="left">
+                        <span margin-left>Double Deluxe</span>
+                      </p>
+                      <p style="color:black" align="left">
+                        <span margin-left>2</span>
+                      </p>
+                    </ion-col>
+                  </ion-row>
+                </ion-row>
+              </div>
+              <button class="transparent proceedPp passportBtn" (click)="next('walkIn')" ion-button>
+                Proceed to Step 4</button>
+            </div>
+            <!--Step 4-->
+            <div *ngIf="currentPage === 'walkStep4'" class="step3 stepsMargin">
+              <h4 class="cck cckP head">Check In: Step 4</h4>
+              <h4 class="head cckpDesc">Read and Agree to the terms and Conditions</h4>
+              <hr margin-bottom>
+              <div class="userDetails tC termContainerPp">
+                <ion-row margin-bottom class="term-container termPp" padding text-left>
+                  <div class="overflows">
+                    <h4 style="color:#c3c8cd;" text-center>Terms and Conditions</h4>
+                    <h5>I understand that my condition on the registration card is authorization for use of the credit card on file for payment
+                      of my account for this and future stays. I agree that my liability for this bill is not waived, and agree to be
+                      held personally liable in the event that the indicated person, company, or other third party billed, fail to pay
+                      part of all of these charges.</h5>
+            
+                    <h5 style="margin-top:10px;">I understand that hotel management is not responsible for money, jewels, or other valuables that have been misplaced,
+                      stolen, or left in guestrooms, meeting rooms, public areas, family and/or hotel vehicles. We are recommended deposition
+                      of valuable items at reception.</h5>
+                  </div>
+                </ion-row>
+              </div>
+              <ion-row class="spacingPp">
+                <ion-col no-padding>
+                  <ion-item style="border: none !important;">
+                    <ion-label class="fonty">Accept terms and conditions.​</ion-label>
+                    <ion-checkbox [(ngModel)]="isTermCheked" color="dark"></ion-checkbox>
+                  </ion-item>
+                  <p class="signPp">Signature: </p>
+                  <button class="signPps" (click)="clear()" ion-button>
+                    Reset
+                  </button>
+                  <div color="subtle" padding class="signPadpP" style="width:30%;height:30%;text-align:center;vertical-align: middle; background: #c3c8cd; padding: 5px;">
+                    <div class="signPadContaierPP">
+                      <signature-pad [options]="signaturePadOptions" (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad>
+                    </div>
+                  </div>
+                </ion-col>
+                <ion-col>
+                  <button class="transparent proceedPp passportBtn spacingPass" (click)="next('walkIn')" ion-button>
+                    Proceed to Step 5</button>
+                </ion-col>
+              </ion-row>
+            </div>
+            <!--Step 5-->
+            <div *ngIf="currentPage === 'walkStep5'" class="step4 stepsMargin">
+              <h4 class="cck cckP head">Check In: Step 5</h4>
+              <h4 class="head cckpDesc">Settle incidental payment</h4>
+              <hr margin-bottom>
+              <div class="">
+                <ion-row margin-bottom padding text-left>
+                  <ion-col col-6>
+                    <h5>Please pay the incidental payment through the POS terminal. Once the payment is done, you may proceed to the next
+                      step
+                    </h5>
+                    <div class="passportScreen">
+                      <ion-row>
+                        <ion-col col-6 class="">
+                          <p style="color:black" align="right">Transaction ID:</p>
+                          <p style="color:black" align="right">Transaction Date:</p>
+                          <p style="color:black" align="right">Ammount Paid:</p>
+                          <p style="color:black" align="right">Issued By:</p>
+                        </ion-col>
+                        <ion-col col-6 class="">
+                          <p style="color:black" align="left">
+                            <span margin-left>131454</span>
+                          </p>
+                          <p style="color:black" align="left">
+                            <span margin-left>01/01/2019</span>
+                          </p>
+                          <p style="color:black" align="left">
+                            <span margin-left>$300</span>
+                          </p>
+                          <p style="color:black" align="left">
+                            <span margin-left>metasphere</span>
+                          </p>
+                        </ion-col>
+                      </ion-row>
+                    </div>
+                  </ion-col>
+                  <ion-col col-6>
+                    <p class="signPp xtraspaceSign">Signature: </p>
+                    <button class="signPps xtraspaceReset" (click)="clear()" ion-button>
+                      Reset
+                    </button>
+                    <div color="subtle" padding class="signPadpP xtraspacePad" style="width:70%;height:30%;text-align:center;vertical-align: middle; background: #c3c8cd; padding: 5px;">
+                      <div class="signPadContaierPP">
+                        <signature-pad [options]="signaturePadOptions" (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad>
+                      </div>
+                    </div>
+                    <button class="transparent proceedPp passportBtn" (click)="next('walkIn')" ion-button>
+                      Proceed to Step 6</button>
+                  </ion-col>
+                </ion-row>
+              </div>
+            </div>
+            <!--Step 6-->
+            <div *ngIf="currentPage === 'walkStep6'" class="step5 stepsMargin">
+              <h4 class="cck cckP head">Check In: Completed</h4>
+              <hr margin-bottom>
+              <div class="contain">
+                <h3>Welcome to metasphere Hotel! Please get your keycard from the dispenser.</h3>
+                <br>
+                <h3>Enjoy Your Stay!</h3>
+              </div>
+              <button class="transparent proceedPp passportBtn spacingPass" (click)="quit()" ion-button>
+                Done</button>
+            </div>
+
+            <!--Login MSOCIAL Account-->
+            <!--Step 1-->
+            <div text-center *ngIf="currentPage === 'msocialStep1'" class="roomInfo msocialAccnt stepsMargin">
+              <h4 class="cck cckP head">
+                Check In: Step 1</h4>
+              <h4 class="head cckpDesc">
+                  Login your millenium account</h4>
+              <!-- input room information and last name content -->
+              <ion-row>
+                <ion-col>
+                </ion-col>
+                <ion-col>
+                  <ion-row>
+                        <h4 class="cck" style="color: black">Login Millenium Account</h4>
+                      <hr margin-bottom>
+                      
+                      <div class="container">
+                        <ion-item margin-bottom style="margin-top: 25px;">
+                          <ion-input text-center placeholder="Username"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                          <ion-input text-center type="text" placeholder="Password"></ion-input>
+                        </ion-item>
+                      </div>
+                  </ion-row>
+                  <ion-row>
+                    <button class="transparent passportBtn1" (click)="next('walkIn')" ion-button>
+                      Submit</button>
+                  </ion-row>
+                  <ion-row>
+                    <button class="transparent passportBtn2" (click)="next('walkIn')" ion-button>
+                      Retry</button>
+                  </ion-row>
+                </ion-col>
+                <ion-col>
+                  <button class="transparent proceedPp passportBtn" (click)="next('msocialAccnt')" ion-button>
+                    Proceed to Step 2</button>
+                </ion-col>
+              </ion-row>
+            </div>
+            <!--Step 2-->
+            <div text-center *ngIf="currentPage === 'msocialStep2'" class="roomInfo msocialAccnt msocialAccnt2 stepsMargin">
+              <h4 class="cck cckP head">
+                Check In: Step 2</h4>
+              <h4 class="head cckpDesc">
+               Choose a reservation to check in</h4>
+              <!-- input room information and last name content -->
+              <ion-row>
+                <h4 class="reservationHead">Reservations Available</h4>
+              </ion-row>
+              <ion-row text-center class="reservations">
+                <!--1-->
+                <ion-col >
+                    <ion-row ><h6>Choose Reservation </h6></ion-row>
+                    <ion-row class="down"><p><input type="radio" name="himpaired" checked="true" value="no"></p></ion-row>
+                    <ion-row class="down"><p><input type="radio" name="himpaired" checked="true" value="no"></p></ion-row>
+                    <ion-row class="down"><p><input type="radio" name="himpaired" checked="true" value="no"></p></ion-row>
+                    <ion-row class="down"><p><input type="radio" name="himpaired" checked="true" value="no"></p></ion-row>
+                    <ion-row class="down"><p><input type="radio" name="himpaired" checked="true" value="no"></p></ion-row>
+                </ion-col>
+                <!--2-->
+                <ion-col>
+                  <ion-row><h6>Reservation Code</h6></ion-row>
+                  <ion-row><p>0001</p></ion-row>
+                  <ion-row><p>0002</p></ion-row>
+                  <ion-row><p>0003</p></ion-row>
+                  <ion-row><p>0004</p></ion-row>
+                  <ion-row><p>0005</p></ion-row>
+                </ion-col>
+                <!--3-->
+                <ion-col>
+                  <ion-row><h6>Reservation Date</h6></ion-row>
+                  <ion-row><p>01/01/1990</p></ion-row>
+                  <ion-row><p>01/01/1991</p></ion-row>
+                  <ion-row><p>01/01/1992</p></ion-row>
+                  <ion-row><p>01/01/1993</p></ion-row>
+                  <ion-row><p>01/01/1994</p></ion-row>
+                </ion-col>
+                <!--4-->
+                <ion-col>
+                  <ion-row><h6>Checkin Date</h6></ion-row>
+                  <ion-row><p>01/01/1990</p></ion-row>
+                  <ion-row><p>01/02/1991</p></ion-row>
+                  <ion-row><p>01/03/1992</p></ion-row>
+                  <ion-row><p>01/04/1993</p></ion-row>
+                  <ion-row><p>01/05/1994</p></ion-row>
+                </ion-col>
+                <!--5-->
+                <ion-col>
+                  <ion-row><h6>Departure Date</h6></ion-row>
+                  <ion-row><p>01/05/1990</p></ion-row>
+                  <ion-row><p>01/05/1991</p></ion-row>
+                  <ion-row><p>01/05/1992</p></ion-row>
+                  <ion-row><p>01/05/1993</p></ion-row>
+                  <ion-row><p>01/05/1994</p></ion-row>
+                </ion-col>
+                <!--6-->
+                <ion-col>
+                  <ion-row><h6>No of Guests</h6></ion-row>
+                  <ion-row><p>2</p></ion-row>
+                  <ion-row><p>3</p></ion-row>
+                  <ion-row><p>2</p></ion-row>
+                  <ion-row><p>2</p></ion-row>
+                  <ion-row><p>2</p></ion-row>
+                </ion-col>
+                <!--7-->
+                <ion-col>
+                  <ion-row><h6>Room type</h6></ion-row>
+                  <ion-row class="cent"><p>Double</p></ion-row>
+                  <ion-row class="cent"><p>Family</p></ion-row>
+                  <ion-row class="cent"><p>Single Deluxe</p></ion-row>
+                  <ion-row><p>Single</p></ion-row>
+                  <ion-row><p>Double Matrimonial</p></ion-row>
+                </ion-col>
+              </ion-row>
+              <button class="transparent proceedPp passportBtn2" (click)="next('msocialAccnt')" ion-button>
+                Proceed to Step 3</button>
+            </div>
+            <!--Step 3-->
+              <div text-center class="qrCode3 stepsMargin" *ngIf="currentPage === 'msocialStep3'">
+                <h4 class="cck cckP head">Check In: Step 3</h4>
+                <h4 class="head cckpDesc">Place your passport on the Scanner and click Scan</h4>
+                <hr margin-bottom>
+                <div class="qrContainer">
+                  <ion-row>
+                    <ion-col col-6 class="col1">
+                      <ion-row>
+                        <button class="transparent passportBtn" (click)="captureID()" ion-button>
+                          Scan ID Card</button>
+                      </ion-row>
+                      <ion-row>
+                        <button class="transparent passportBtn" (click)="capturePassport()" ion-button>
+                          Scan Passport</button>
+                      </ion-row>
+                      <ion-row>
+                      </ion-row>
+                    </ion-col>
+                    <ion-col col-6>
+                      <div class="passportScreen">
+              
+                      </div>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <button class="transparent passportBtn retry" (click)="retry()" ion-button>
+                      Retry</button>
+                    <button class="transparent proceedPp passportBtn" (click)="next('msocialAccnt')" ion-button>
+                      Proceed to Step 4</button>
+                  </ion-row>
+                </div>
+              </div>
+              <!--Step 4-->
+              <div text-center *ngIf="currentPage === 'msocialStep4'" class="passsportCheck2 stepsMargin">
+                <h4 class="cck cckP head">Check In: Step 4</h4>
+                <h4 class="head cckpDesc">Review registration card</h4>
+                <hr margin-bottom>
+                <div class="containerStep">
+                  <ion-row class="overf">
+                    <ion-row>
+                      <ion-col col-6 class="">
+                        <p style="color:black" align="right">First Name:</p>
+                        <p style="color:black" align="right">Middle Name:</p>
+                        <p style="color:black" align="right">Last Name:</p>
+                        <p style="color:black" align="right">Company:</p>
+                        <p style="color:black" align="right">Mobile Number:</p>
+                        <p style="color:black" align="right">No. of Adults</p>
+                        <p style="color:black" align="right">No. of Children:</p>
+                      </ion-col>
+                      <ion-col col-6 class="">
+                        <p style="color:black" align="left">
+                          <span margin-left>Charles</span>
+                        </p>
+                        <p style="color:black" align="left">
+                          <span margin-left>Diel</span>
+                        </p>
+                        <p style="color:black" align="left">
+                          <span margin-left>Jaranilla</span>
+                        </p>
+                        <p style="color:black" align="left">
+                          <span margin-left>metasphere</span>
+                        </p>
+                        <p style="color:black" align="left">
+                          <span margin-left>0922909029</span>
+                        </p>
+                        <p style="color:black" align="left">
+                          <span margin-left>10</span>
+                        </p>
+                        <p style="color:black" align="left">
+                          <span margin-left>4</span>
+                        </p>
+                      </ion-col>
+                    </ion-row>
+                    <ion-row class="otherC">
+                      <ion-col col-6 class="">
+                        <p style="color:black" align="right">Special instruction:</p>
+                        <p style="color:black" align="right">Arrival Date:</p>
+                        <p style="color:black" align="right">Arrival Time:</p>
+                        <p style="color:black" align="right">Departure Date:</p>
+                        <p style="color:black" align="right">Room Type:</p>
+                        <p style="color:black" align="right">Number of Rooms:</p>
+                      </ion-col>
+                      <ion-col col-6 class="">
+                        <p style="color:black" align="left">
+                          <span margin-left>I want to have a welldone egss</span>
+                        </p>
+                        <p style="color:black" align="left">
+                          <span margin-left>01/01/2019</span>
+                        </p>
+                        <p style="color:black" align="left">
+                          <span margin-left>11:05am</span>
+                        </p>
+                        <p style="color:black" align="left">
+                          <span margin-left>01/02/2019</span>
+                        </p>
+                        <p style="color:black" align="left">
+                          <span margin-left>Double Deluxe</span>
+                        </p>
+                        <p style="color:black" align="left">
+                          <span margin-left>2</span>
+                        </p>
+                      </ion-col>
+                    </ion-row>
+                  </ion-row>
+                </div>
+                <button class="transparent proceedPp passportBtn" (click)="next('msocialAccnt')" ion-button>
+                  Proceed to Step 5</button>
+              </div>
+              <!--Step 5-->
+              <div *ngIf="currentPage === 'msocialStep5'" class="step3 stepsMargin">
+                <h4 class="cck cckP head">Check In: Step 5</h4>
+                <h4 class="head cckpDesc">Read and Agree to the terms and Conditions</h4>
+                <hr margin-bottom>
+                <div class="userDetails tC termContainerPp">
+                  <ion-row margin-bottom class="term-container termPp" padding text-left>
+                    <div class="overflows">
+                      <h4 style="color:#c3c8cd;" text-center>Terms and Conditions</h4>
+                      <h5>I understand that my condition on the registration card is authorization for use of the credit card on file for payment
+                        of my account for this and future stays. I agree that my liability for this bill is not waived, and agree to be
+                        held personally liable in the event that the indicated person, company, or other third party billed, fail to pay
+                        part of all of these charges.</h5>
+              
+                      <h5 style="margin-top:10px;">I understand that hotel management is not responsible for money, jewels, or other valuables that have been misplaced,
+                        stolen, or left in guestrooms, meeting rooms, public areas, family and/or hotel vehicles. We are recommended deposition
+                        of valuable items at reception.</h5>
+                    </div>
+                  </ion-row>
+                </div>
+                <ion-row class="spacingPp">
+                  <ion-col no-padding>
+                    <ion-item style="border: none !important;">
+                      <ion-label class="fonty">Accept terms and conditions.​</ion-label>
+                      <ion-checkbox [(ngModel)]="isTermCheked" color="dark"></ion-checkbox>
+                    </ion-item>
+                    <p class="signPp">Signature: </p>
+                    <button class="signPps" (click)="clear()" ion-button>
+                      Reset
+                    </button>
+                    <div color="subtle" padding class="signPadpP" style="width:30%;height:30%;text-align:center;vertical-align: middle; background: #c3c8cd; padding: 5px;">
+                      <div class="signPadContaierPP">
+                        <signature-pad [options]="signaturePadOptions" (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad>
+                      </div>
+                    </div>
+                  </ion-col>
+                  <ion-col>
+                    <button class="transparent proceedPp passportBtn spacingPass" (click)="next('msocialAccnt')" ion-button>
+                      Proceed to Step 6</button>
+                  </ion-col>
+                </ion-row>
+              </div>
+              <!--step 6-->
+              <div *ngIf="currentPage === 'msocialStep6'" class="step4 stepsMargin">
+                <h4 class="cck cckP head">Check In: Step 6</h4>
+                <h4 class="head cckpDesc">Settle incidental payment</h4>
+                <hr margin-bottom>
+                <div class="">
+                  <ion-row margin-bottom padding text-left>
+                    <ion-col col-6>
+                      <h5>Please pay the incidental payment through the POS terminal. Once the payment is done, you may proceed to the next
+                        step
+                      </h5>
+                      <div class="passportScreen">
+                        <ion-row>
+                          <ion-col col-6 class="">
+                            <p style="color:black" align="right">Transaction ID:</p>
+                            <p style="color:black" align="right">Transaction Date:</p>
+                            <p style="color:black" align="right">Ammount Paid:</p>
+                            <p style="color:black" align="right">Issued By:</p>
+                          </ion-col>
+                          <ion-col col-6 class="">
+                            <p style="color:black" align="left">
+                              <span margin-left>131454</span>
+                            </p>
+                            <p style="color:black" align="left">
+                              <span margin-left>01/01/2019</span>
+                            </p>
+                            <p style="color:black" align="left">
+                              <span margin-left>$300</span>
+                            </p>
+                            <p style="color:black" align="left">
+                              <span margin-left>metasphere</span>
+                            </p>
+                          </ion-col>
+                        </ion-row>
+                      </div>
+                    </ion-col>
+                    <ion-col col-6>
+                      <p class="signPp xtraspaceSign">Signature: </p>
+                      <button class="signPps xtraspaceReset" (click)="clear()" ion-button>
+                        Reset
+                      </button>
+                      <div color="subtle" padding class="signPadpP xtraspacePad" style="width:70%;height:30%;text-align:center;vertical-align: middle; background: #c3c8cd; padding: 5px;">
+                        <div class="signPadContaierPP">
+                          <signature-pad [options]="signaturePadOptions" (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad>
+                        </div>
+                      </div>
+                      <button class="transparent proceedPp passportBtn" (click)="next('msocialAccnt')" ion-button>
+                        Proceed to Step 7</button>
+                    </ion-col>
+                  </ion-row>
+                </div>
+              </div>
+              <!--Step 7-->
+              <div *ngIf="currentPage === 'msocialStep7'" class="step5 stepsMargin">
+                <h4 class="cck cckP head">Check In: Completed</h4>
+                <hr margin-bottom>
+                <div class="contain">
+                  <h3>Welcome to metasphere Hotel! Please get your keycard from the dispenser.</h3>
+                  <br>
+                  <h3>Enjoy Your Stay!</h3>
+                </div>
+                <button class="transparent proceedPp passportBtn spacingPass" (click)="quit()" ion-button>
+                  Done</button>
+              </div>
+
 
             <div text-center class="roomInfo" *ngIf="currentPage === 'confirmNumber'"> <!-- input confirmation number content -->
               <h4 class="cck">Confirmation Number</h4>

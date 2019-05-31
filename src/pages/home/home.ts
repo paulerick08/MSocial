@@ -68,12 +68,14 @@ export class HomePage {
   config3='';
   bgImage ='../assets/imgs/AccorHotel/13152495.jpg';
   newpath='';
-  
+  myDate = new Date().getTime();
+  date2;
+
   pages = {
-    //array of pages for check-in 
+    //array of pages for check-in 'roomInfo',
     checkIn: ['checkinOption', 'confirmNumber', 'verification', 'passport', 'scanComplete', 'terms', 'userDetails', 'dtcm', 'dtcm2', 'signature', 'incidentalAccount', 'incidental', 'signature2', 'incidentalProcess', 'paymentAccepted', 'checkInSuccess'],
      //array of pages for check-out 
-    checkOut: ['roomInfo', 'folio','cardAccount','cardDetails','checkoutSignature','paymentProcess','paymentAccepted2','checkOutSuccess']
+    checkOut: [ 'folio','cardAccount','cardDetails','checkoutSignature','paymentProcess','paymentAccepted2','checkOutSuccess']
   }
   otherPages = {
     passportCheck: ['ppStep1', 'ppStep2', 'ppStep3', 'ppStep4', 'ppStep5' ],
@@ -117,7 +119,7 @@ export class HomePage {
    
     setInterval(()=>{ 
       //code goes here that will be run every 5 seconds.    
-      this.getDate();
+      this.getDateText();
       this.getTime();
     }, 500);
 
@@ -129,6 +131,8 @@ export class HomePage {
     ];
   const parse = require('mrz').parse; 
   console.log( parse(mrz))
+  this.getTime();
+  this.getDate();
   }
 
   getTime(){  //get time data
@@ -136,6 +140,9 @@ export class HomePage {
   }
   getDate(){  //get date data
     this.date = moment().format('dddd DD MMMM') ;
+  }
+  getDateText() {  //get date data
+    this.date2 = moment().format('DD/MM/YYYY');
   }
 
   ionViewDidLoad(){
@@ -230,6 +237,38 @@ recognition.detectText(params, (err, data) => {
  
 })
 .catch((error: any) => console.error(error));
+  }
+  captureID() { //start capturing image
+    const options = {
+      areaOfInterest: '0.5 0.8',
+      orientation: 'portrait',
+      licenseFileName: "AbbyyRtrSdk.license",
+    };
+    this.abbyyRTR.startTextCapture(options)
+      .then((res: any) => {
+        console.log(res);
+        this.textRecognized = res;
+        this.page++;
+        this.currentPage = this.pages[this.selectedPages][this.page];
+
+      })
+      .catch((error: any) => console.error(error));
+  }
+  capturePassport() { //start capturing image
+    const options = {
+      areaOfInterest: '0.8 0.8',
+      orientation: 'landscape',
+      licenseFileName: "AbbyyRtrSdk.license",
+    };
+    this.abbyyRTR.startTextCapture(options)
+      .then((res: any) => {
+        console.log(res);
+        this.textRecognized = res;
+        this.page++;
+        this.currentPage = this.pages[this.selectedPages][this.page];
+
+      })
+      .catch((error: any) => console.error(error));
   }
   getPicture(sourceType: PictureSourceType) { //get picture data
     this.camera.getPicture({
@@ -692,11 +731,50 @@ quit(){
         this.page++;
         this.currentPage = this.pages[this.selectedPages][this.page];
       } else {
-        this.currentPage = this.otherPages[type][this.otherPageNumber];
-        this.otherPagesStatus = type;
-        this.otherPageNumber++;
-        console.log(this.currentPage)
-        console.log(this.otherPageNumber);
+        if (this.currentPage === 'idStep3' || this.currentPage === 'msocialStep5' || this.currentPage === 'ppStep3' || this.currentPage === 'qrStep4' ||  this.currentPage === 'walkStep4' ) {
+          if (this.isTermCheked && this.signatureDataUrl) { //terms and condition verification
+            this.currentPage = this.otherPages[type][this.otherPageNumber];
+            this.otherPagesStatus = type;
+            this.otherPageNumber++;
+            console.log(this.currentPage)
+            console.log(this.otherPageNumber);
+            this.clear();
+          } else {
+            if (!this.isTermCheked) {
+              this.toast.create({
+                message: 'Please Check Terms & Condition to proceed',
+                duration: 2000
+              }).present();
+            } else {
+              this.toast.create({
+                duration: 2000,
+                message: 'Please sign to continue.'
+              }).present();
+            }
+          }
+        }
+        else if (this.currentPage === 'idStep4' || this.currentPage === 'msocialStep6' || this.currentPage === 'ppStep4' || this.currentPage === 'qrStep5' || this.currentPage === 'walkStep5') {
+          if (this.signatureDataUrl) {
+            this.currentPage = this.otherPages[type][this.otherPageNumber];
+            this.otherPagesStatus = type;
+            this.otherPageNumber++;
+            console.log(this.currentPage)
+            console.log(this.otherPageNumber);
+            this.clear();
+          } else {
+            this.toast.create({
+              duration: 2000,
+              message: 'Please sign to continue.'
+            }).present();
+          }
+        }
+        else {
+          this.currentPage = this.otherPages[type][this.otherPageNumber];
+          this.otherPagesStatus = type;
+          this.otherPageNumber++;
+          console.log(this.currentPage)
+          console.log(this.otherPageNumber);
+      }
       }
     }
     
